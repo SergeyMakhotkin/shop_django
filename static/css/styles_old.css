@@ -1,0 +1,45 @@
+.headers {
+    font-family: "Arial Black";
+    font-size: 20;
+    margin: 0 auto;
+    color: red;
+    text-align: center
+
+}
+
+.menu_list {
+    float: left;
+    display: inline-block;
+    color: green;
+    font-size: 30;
+
+}
+.menu_list a{
+    float: left;
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: green;
+    font-size: 30;
+
+}
+
+.menu_list a:hover {
+    color: darkred;
+}
+
+.menu {
+    display: block;
+    margin: 0 auto;
+    max-width: 50%;
+    text-align: center
+
+
+}
+
+.menu ul {
+    text-align: center;
+    display: inline-block
+
+
+}
