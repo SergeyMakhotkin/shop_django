@@ -1,17 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
     <title>Контакты</title>
-    <link rel="stylesheet" href="/static/css/styles.css">
-</head>
-<body>
-<h2 class="headers">Контакты</h2>
-<div class="menu">
-    <ul>
-        <li class="menu_list"><a href="/products/">Товары</a></li>
-        <li class="menu_list"><a href="/">Главная</a></li>
-    </ul>
-</div>
-</body>
-</html>
+{% endblock %}
+
+{% block content %}
+    <hr>
+    <div>
+        <h2>Напишите нам</h2>
+        <form action="">
+            <fieldset>
+                <legend>Окно отправки сообщения</legend>
+                <label>Ваше имя: <br>
+                    <input type="text" size="30" placeholder="Введите Имя"><br></label>
+                <label>email:<br>
+                    <input type="text" size="30" placeholder="email"><br></label>
+                <label>Тема письма: <br>
+                    <input type="text" size="50" placeholder="Тема"><br></label>
+                <label>Текст сообщения:<br>
+                    <textarea rows=10 cols="80" placeholder="Введите текст сообщения"></textarea><br></label>
+                <p><input type="checkbox" checked="checked">
+                    Разрешаю использовать мой адрес электронной почты для рекламной рассылки
+                </p><br>
+                <input type="submit" value="Отправить">
+                <input type="reset" value="Очистить форму">
+            </fieldset>
+        </form>
+        <hr>
+    </div>
+
+    <div>
+        <h3>Наши контакты:</h3>
+        <ul class="info">
+            <li>г. Москва, Проспект Мира, 1</li>
+            <li>Телефон: 323-232-322</li>
+            <li>email: info@myshop.ru</li>
+            <li>Круглосуточно, без перерывов и выходных</li>
+        </ul>
+    </div>
+    <div class="google_map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.1565998801343!2d37.629381615392035!3d55.77315199789056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a6e57541cc7%3A0xda1911f79fbb5d3c!2z0L_RgC3RgiDQnNC40YDQsCwgMSwg0JzQvtGB0LrQstCwLCAxMjkwOTA!5e0!3m2!1sru!2sru!4v1564737881567!5m2!1sru!2sru" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <hr>
+    </div>
+{% endblock %}

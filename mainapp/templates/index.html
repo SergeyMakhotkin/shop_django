@@ -1,37 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
+{% block title %}
     <title>Магазин оборудования</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-</head>
+{% endblock %}
 
-<body>
-    <div class=container>
-        <div class="header">
-            <img src="img/logo.png" width="60px" alt="logo">
-            <ul class="menu">
-                <li><a href="catalog.html">Каталог</a></li>
-                <li><a href="contacts.html">Контакты</a></li>
+
+
+{% block content %}
+    <div>
+        <hr>
+
+        <hr>
+        {% if username %}
+            <div style="font-size: 24px">Приветствую, {{ username | title }}!</div>
+            <div>{% now "D.M.Y" %}</div>
+        {% else %}
+            <div style="font-size: 24px">Приветствую, Гость!</div>
+        {% endif %}
+        <hr>
+        <div>
+            <ul class="product_menu">
+
+                {% for link in links_menu %}
+                    <li>
+                        <a href={% url link.href %}
+                                   class="product_menu {% if request.resolver_match.url_name == link.href %}
+                           product_menu_active {% endif %}">{{ link.name }}</a>
+                    </li>
+                {% endfor %}
             </ul>
         </div>
-    </div>
-    <div>
         <hr>
         <h1>Магазин оборудования</h1>
         <h3>Организация промышленной Mesh-сети</h3>
         <hr>
         <!-- Комментарий -->
-        <h2> </h2>
-        <img src="img/ABBTropos.jpg">
-        <p><i><b>Приветственное сообщение на странице магазина</b></i><br> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, dignissimos!</p>
+        <h2></h2>
+        <img src={% static '/mainapp/img/ABBTropos.jpg' %}>
+        <p><i><b>Приветственное сообщение на странице магазина</b></i><br> Lorem ipsum dolor sit amet, consectetur
+            adipisicing elit. Unde, dignissimos!</p>
         <hr>
     </div>
-    <div class=footer>
-        <footer>
-            <p>&copy; Все права защищены </p>
-        </footer>
-    </div>
+{% endblock %}
 
-</body></html>
