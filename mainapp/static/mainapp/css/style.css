@@ -52,6 +52,52 @@ b. Убрать маркеры списка.*/
     background-color:
 }
 
+
+
+
+
+
+.product_menu {
+    /*Цвет текста, размер шрифта, начертание шрифта и т.д.)
+b. Убрать маркеры списка.*/
+    font-variant: small-caps;
+    font-family: sans-serif;
+    font-style: italic;
+    font-size: 20px;
+    font-weight: bold;
+    list-style: none;
+    text-transform: lowercase;
+    text-align: center;
+    margin-right: 5%;
+    display: inline-flex;
+
+    padding-left: 25px;
+
+
+}
+
+.product_menu ul {
+     margin: 0 auto;
+
+
+}
+
+
+.product_menu a {
+    text-decoration: none;
+    font-size: 25px;
+    display: flex;
+
+}
+
+.product_menu_active a {
+    color: red;
+}
+
+
+
+
+
 .menu a:active {
     color: deeppink;
 }
