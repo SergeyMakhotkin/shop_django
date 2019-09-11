@@ -68,14 +68,26 @@ b. Убрать маркеры списка.*/
     list-style: none;
     text-transform: lowercase;
     text-align: center;
-    float: left;
     margin-right: 5%;
+    display: inline-flex;
+
+    padding-left: 25px;
+
+
+}
+
+.product_menu ul {
+     margin: 0 auto;
+
+
 }
 
 
 .product_menu a {
     text-decoration: none;
     font-size: 25px;
+    display: flex;
+
 }
 
 .product_menu_active a {

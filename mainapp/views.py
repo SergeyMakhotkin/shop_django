@@ -4,13 +4,15 @@ from django.shortcuts import render
 # Create your views here.
 
 def main(request):
-    context = {'username': 'SERGEY'}
+    #context = {'username': 'SERGEY'}
+    #links_menu = [
     links_menu = [
         {'href': 'product_1420', 'name': 'ABB Tropos 1420'},
         {'href': 'product_4310', 'name': 'ABB Tropos 4310'},
         {'href': 'product_6420', 'name': 'ABB Tropos 6420'}
     ]
-    return render(request, 'index.html', context, links_menu)
+    context = {'links_menu': links_menu, 'username': 'SERGEY'}
+    return render(request, 'index.html', context)
 
 
 def products(request):
