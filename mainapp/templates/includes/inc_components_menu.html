@@ -1,0 +1,8 @@
+<div class=components_menu>
+    <ul>
+        {% for product in products %}
+            <li>product.name<a {% include 'includes/inc_components_menu.html' %}</a></li>
+        {% endfor %}
+
+    </ul>
+</div>
