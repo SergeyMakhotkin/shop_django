@@ -17,8 +17,9 @@ def main(request):
 
 
 def products(request):
-
-    return render(request, 'catalog.html')
+    products = Product.objects.all()
+    content = {'products': products}
+    return render(request, 'catalog.html', content)
 
 
 def contacts(request):
@@ -32,8 +33,12 @@ def product_1(request):
 
 
 def product_2(request):
-    return render(request, 'product_4310.html')
+    products = Product.objects.all()
+    content = {'products': products}
+    return render(request, 'product_4310.html', content)
 
 
 def product_3(request):
-    return render(request, 'product_6420.html')
+    products = Product.objects.all()
+    content = {'products': products}
+    return render(request, 'product_6420.html', content)

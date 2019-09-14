@@ -8,24 +8,26 @@
 
 {% block content %}
     <hr>
+    {% include "includes/inc_components_menu.html" %}
+    <hr>
     <div>
         <div>
             <h1 style="color: green; text-align: center">Каталог оборудования</h1>
         </div>
         <div>
             <ul class="product_list">
-                <div><a href="product_6420.html"><img src={% static "/mainapp/img/TropOS-6420-XA.png" %} width="80%"
+                <div><a href={% url 'product_6420' %}><img src={% static "/mainapp/img/TropOS-6420-XA.png" %} width="80%"
                                                       alt="ABB Tropos 6420"></a>
-                    <li><a href="product_6420.html">ABB Tropos 6420</a></li>
+                    <li><a href={% url 'product_6420' %}>ABB Tropos 6420</a></li>
                 </div>
 
-                <div><a href="product_4310.html"><img src={% static "/mainapp/img/router-4310-mesh.jpg" %} width="80%"
+                <div><a href={% url 'product_4310' %}><img src={% static "/mainapp/img/router-4310-mesh.jpg" %} width="80%"
                                                       alt="ABB Tropos 4310"></a>
-                    <li><a href="product_4310.html">ABB Tropos 4310</a></li>
+                    <li><a href={% url 'product_4310' %}>ABB Tropos 4310</a></li>
                 </div>
-                <div><a href="product_1420.html"><img src={% static "/mainapp/img/tropos-1420-mesh-router.jpg" %} width="80%"
+                <div><a href={% url 'product_1420' %}><img src={% static "/mainapp/img/tropos-1420-mesh-router.jpg" %} width="80%"
                                                       alt="ABB Tropos 1420"></a>
-                    <li><a href="product_1420.html">ABB Tropos 1420</a></li>
+                    <li><a href={% url 'product_1420' %}>ABB Tropos 1420</a></li>
                 </div>
             </ul>
         </div>

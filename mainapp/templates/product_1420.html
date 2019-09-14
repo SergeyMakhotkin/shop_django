@@ -6,14 +6,10 @@
 {% endblock %}
 
 {% block content %}
-<div class=components_menu>
-    <ul>
-        {% for product in products %}
-            <li>{{ product.name }}<a href="#" <img src={% media 'products_images/HUBERSUHNER_1399.17.0108_ProductPicture.png' %} alt="{{ product.name }}"></a></li>
-        {% endfor %}
-
-    </ul>
-</div>
+    <hr>
+    {% include "includes/inc_components_menu.html" %}
+    <hr>
+    </div>
     <div>
         <hr>
         <h1>Базовая станция ABB Tropos 1420</h1>
