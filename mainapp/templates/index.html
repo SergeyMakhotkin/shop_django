@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Магазин оборудования</title>
+{% endblock %}
+
+
+
+{% block content %}
+    <div>
+        <hr>
+
+        <hr>
+        {% if username %}
+            <div style="font-size: 24px">Приветствую, {{ username | title }}!</div>
+            <div>{% now "D.M.Y" %}</div>
+        {% else %}
+            <div style="font-size: 24px">Приветствую, Гость!</div>
+        {% endif %}
+        <hr>
+        <div>
+            <ul class="product_menu">
+
+                {% for link in links_menu %}
+                    <li>
+                        <a href={% url link.href %}
+                                   class="product_menu {% if request.resolver_match.url_name == 'link.href' %}
+                           product_menu_active{% endif %}">{{ link.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <hr>
+        <div>
+            <h1>Магазин оборудования</h1>
+            <h3>Организация промышленной Mesh-сети</h3>
+            <hr>
+            <!-- Комментарий -->
+            <h2></h2>
+            <img src={% static '/mainapp/img/ABBTropos.jpg' %}>
+            <p><i><b>Приветственное сообщение на странице магазина</b></i><br> Lorem ipsum dolor sit amet, consectetur
+                adipisicing elit. Unde, dignissimos!</p>
+            <hr>
+        </div>
+    </div>
+{% endblock %}
+

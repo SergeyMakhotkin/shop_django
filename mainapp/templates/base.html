@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+    {% endblock %}
+
+    {% block css %}
+    {% endblock %}
+    <link rel="stylesheet" href={% static '/mainapp/css/style.css' %}>
+</head>
+<body>
+
+
+{% include 'includes/inc_menu.html' %}
+
+{% block content %}
+{% endblock %}
+
+{% block js %}
+{% endblock %}
+
+{% include 'includes/inc_footer.html' %}
+</body>
+</html>
