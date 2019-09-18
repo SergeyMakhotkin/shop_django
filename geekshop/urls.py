@@ -18,6 +18,8 @@ from django.urls import path
 from mainapp.views import main, products, contacts, product_1, product_2, product_3
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls import include
+
 
 urlpatterns = [
     path('', main, name='main'),
@@ -26,10 +28,9 @@ urlpatterns = [
     path('prod_1/', product_1, name='product_1420'),
     path('prod_2/', product_2, name='product_4310'),
     path('prod_3/', product_3, name='product_6420'),
-    path('admin/', admin.site.urls),
     path('auth/', include('authapp.urls', namespace='auth')),
+    path('admin/', admin.site.urls),
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-

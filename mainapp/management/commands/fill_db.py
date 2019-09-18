@@ -34,10 +34,13 @@ class Command(BaseCommand):
             _category = ProductCategory.objects.get(name=category_name)
             # Заменяем название категории объектом
             product['category'] = _category
-            product["image"] = product_image_path if ("image" in product) else ""
+            if ("image" in product):
+                product["image"] = product_image_path
+            else:
+                product["image"] = os.path.join('products_images', "nophoto.jpg")
             new_product = Product(**product)
             new_product.save()
 
         # Создаем суперпользователя при помощи менеджера модели
-        #ShopUser.objects.all().delete()
+        ShopUser.objects.all().delete()
         ShopUser.objects.create_superuser('admin', 'admin@geekshop.local', '12345678', age=27)
