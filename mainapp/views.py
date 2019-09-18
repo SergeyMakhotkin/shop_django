@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from mainapp.models import ProductCategory, Product
 
 
 # Create your views here.
@@ -11,12 +12,14 @@ def main(request):
         {'href': 'product_4310', 'name': 'ABB Tropos 4310'},
         {'href': 'product_6420', 'name': 'ABB Tropos 6420'}
     ]
-    context = {'links_menu': links_menu, 'username': 'SERGEY'}
+    context = {'links_menu': links_menu, 'username': 'SERGEY', 'products': Product.objects.all()}
     return render(request, 'index.html', context)
 
 
 def products(request):
-    return render(request, 'catalog.html')
+    products = Product.objects.all()
+    content = {'products': products}
+    return render(request, 'catalog.html', content)
 
 
 def contacts(request):
@@ -24,12 +27,18 @@ def contacts(request):
 
 
 def product_1(request):
-    return render(request, 'product_1420.html')
+    products = Product.objects.all()
+    content = {'products': products}
+    return render(request, 'product_1420.html', content)
 
 
 def product_2(request):
-    return render(request, 'product_4310.html')
+    products = Product.objects.all()
+    content = {'products': products}
+    return render(request, 'product_4310.html', content)
 
 
 def product_3(request):
-    return render(request, 'product_6420.html')
+    products = Product.objects.all()
+    content = {'products': products}
+    return render(request, 'product_6420.html', content)
