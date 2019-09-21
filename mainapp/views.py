@@ -12,7 +12,8 @@ def main(request):
         {'href': 'product_4310', 'name': 'ABB Tropos 4310'},
         {'href': 'product_6420', 'name': 'ABB Tropos 6420'}
     ]
-    context = {'links_menu': links_menu, 'username': 'SERGEY', 'products': Product.objects.all()}
+    username = "Гость" if request.user.is_anonymous else request.user.username
+    context = {'links_menu': links_menu, 'username': username, 'products': Product.objects.all()}
     return render(request, 'index.html', context)
 
 
