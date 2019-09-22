@@ -32,11 +32,12 @@ def register(request):
     title = 'регистрация'
 
     if request.method == 'POST':
-        register_form = ShopUserRegisterForm(request.POST, request.FILES)
+        register_form = ShopUserRegisterForm(data=request.POST, files=request.FILES)
 
         if register_form.is_valid():
-            register_form.save()
-            return HttpResponseRedirect(reverse('auth:login'))
+            user = register_form.save()
+            auth.login(request, user)
+            return HttpResponseRedirect(reverse('main'))
     else:
         register_form = ShopUserRegisterForm()
 

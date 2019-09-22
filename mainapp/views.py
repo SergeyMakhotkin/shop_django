@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from mainapp.models import ProductCategory, Product
 
 
@@ -17,10 +17,14 @@ def main(request):
     return render(request, 'index.html', context)
 
 
-def products(request):
-    products = Product.objects.all()
-    content = {'products': products}
+def products(request, pk=None):
+    var_products = Product.objects.all()
+    if pk:
+        category = get_object_or_404(ProductCategory, pk=pk)
+        var_products = var_products.filter(category=category)
+    content = {'products': var_products, 'categories': ProductCategory.objects.all()}
     return render(request, 'catalog.html', content)
+
 
 
 def contacts(request):
@@ -28,18 +32,15 @@ def contacts(request):
 
 
 def product_1(request):
-    products = Product.objects.all()
-    content = {'products': products}
+    content = {'products': Product.objects.all(), 'categories': ProductCategory.objects.all()}
     return render(request, 'product_1420.html', content)
 
 
 def product_2(request):
-    products = Product.objects.all()
-    content = {'products': products}
+    content = {'products': Product.objects.all(), 'categories': ProductCategory.objects.all()}
     return render(request, 'product_4310.html', content)
 
 
 def product_3(request):
-    products = Product.objects.all()
-    content = {'products': products}
+    content = {'products': Product.objects.all(), 'categories': ProductCategory.objects.all()}
     return render(request, 'product_6420.html', content)
