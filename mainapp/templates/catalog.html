@@ -14,12 +14,7 @@
         <div>
             <h1 style="color: green; text-align: center">Каталог оборудования</h1>
         </div>
-    <div>
-        <div style="text-align: right; margin-right: 5em">Количество слотов в корзине: {{ basket|basket_total_quantity }}</div>
-        <div  style="text-align: right; margin-right: 5em">Количество товаров в корзине: {{ basket|length }}</div>
-        <div style="text-align: right; margin-right: 5em">Общая стоимость товаров в корзине: {{ basket|basket_total_cost }} руб.</div>
-        <hr>
-    </div>
+        {% include "includes/inc_basketslot_info.html" %}
         {% include "includes/inc_product_categories_menu.html" %}
         <hr>
 

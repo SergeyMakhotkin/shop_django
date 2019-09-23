@@ -39,6 +39,13 @@ def products(request, pk=None):
                    'basket': basket}
         return render(request, 'hot_product.html', content)
 
+
+# def get_basket(user):
+#     if user.is_authenticated:
+#         return basket.objects.filter(user=user)
+#     else:
+#         return []
+
 def product(request, pk):
     title = 'продукты'
 
@@ -46,7 +53,7 @@ def product(request, pk):
         'title': title,
         'links_menu': ProductCategory.objects.all(),
         'product': get_object_or_404(Product, pk=pk),
-        'basket': get_basket(request.user),
+        'basket': request.user.basket.all(),
     }
 
     return render(request, 'product.html', content)
