@@ -1,5 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from mainapp.models import ProductCategory, Product
+from basketapp.models import BasketSlot
+
+
 
 
 # Create your views here.
@@ -19,12 +22,34 @@ def main(request):
 
 def products(request, pk=None):
     var_products = Product.objects.all()
-    if pk:
-        category = get_object_or_404(ProductCategory, pk=pk)
-        var_products = var_products.filter(category=category)
-    content = {'products': var_products, 'categories': ProductCategory.objects.all()}
-    return render(request, 'catalog.html', content)
+    basket = []
+    if request.user.is_authenticated:
+        basket = request.user.basket.all()
+        # basket = BasketSlot.objects.filter(user=request.user)
+    if pk is not None:
+        if pk > 0:
+            category = get_object_or_404(ProductCategory, pk=pk)
+            var_products = var_products.filter(category=category)
 
+        content = {'products': var_products, 'categories': ProductCategory.objects.all(), 'basket': basket}
+        return render(request, 'catalog.html', content)
+    else:
+        content = {'hot_product': Product.objects.filter(is_hot=True).first(),
+                   'categories': ProductCategory.objects.all(),
+                   'basket': basket}
+        return render(request, 'hot_product.html', content)
+
+def product(request, pk):
+    title = 'продукты'
+
+    content = {
+        'title': title,
+        'links_menu': ProductCategory.objects.all(),
+        'product': get_object_or_404(Product, pk=pk),
+        'basket': get_basket(request.user),
+    }
+
+    return render(request, 'product.html', content)
 
 
 def contacts(request):

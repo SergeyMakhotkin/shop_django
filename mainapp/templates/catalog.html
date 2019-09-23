@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load custom_tags %}
 
 
 {% block title %}
@@ -13,6 +14,12 @@
         <div>
             <h1 style="color: green; text-align: center">Каталог оборудования</h1>
         </div>
+    <div>
+        <div style="text-align: right; margin-right: 5em">Количество слотов в корзине: {{ basket|basket_total_quantity }}</div>
+        <div  style="text-align: right; margin-right: 5em">Количество товаров в корзине: {{ basket|length }}</div>
+        <div style="text-align: right; margin-right: 5em">Общая стоимость товаров в корзине: {{ basket|basket_total_cost }} руб.</div>
+        <hr>
+    </div>
         {% include "includes/inc_product_categories_menu.html" %}
         <hr>
 
@@ -20,12 +27,14 @@
             <ul class="product_list">
                 {% for product in products %}
                     <div class='product'>
-                        <a href="#"><img src="/media/{{ product.image }}"
+                        <a href="{% url 'products:product' product.pk %}"><img src="/media/{{ product.image }}"
                                          alt="{{ product.short_desc }}">
-                            <li><a href="#">{{ product.name }}</a></li>
+                            <li><a href="{% url 'products:product' product.pk %}">{{ product.name }}</a></li>
+                            <li>{{ product.price }}</li>
                             <li>
                                 <button><a href="{% url 'basket:add' product.pk %}">Добавить в корзину</a></button>
                             </li>
+
                             <li>
                                 <button><a href="{% url 'basket:remove' product.pk %}">Удалить из корзины</a></button>
                             </li>

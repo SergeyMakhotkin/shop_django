@@ -19,18 +19,18 @@
             <div style="font-size: 24px">Приветствую, Гость!</div>
         {% endif %}
         <hr>
-        <div>
-            <ul class="product_menu">
-
-                {% for link in links_menu %}
-                    <li>
-                        <a href={% url link.href %}
-                                   class="product_menu {% if request.resolver_match.url_name == 'link.href' %}
-                           product_menu_active{% endif %}">{{ link.name }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
+{#        <div>#}
+{#            <ul class="product_menu">#}
+{##}
+{#                {% for link in links_menu %}#}
+{#                    <li>#}
+{#                        <a href={% url link.href %}#}
+{#                                   class="product_menu {% if request.resolver_match.url_name == 'link.href' %}#}
+{#                           product_menu_active{% endif %}">{{ link.name }}</a>#}
+{#                    </li>#}
+{#                {% endfor %}#}
+{#            </ul>#}
+{#        </div>#}
         <hr>
         <div>
             <h1>Магазин оборудования</h1>

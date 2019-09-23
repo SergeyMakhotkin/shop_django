@@ -9,7 +9,7 @@ class BasketSlot(models.Model):
         verbose_name = 'Слот корзины'
         verbose_name_plural = 'Слоты корзины'
 
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='basket')
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(verbose_name='количество', default=1)
     created = models.DateTimeField(verbose_name='время создания', auto_now_add=True)
