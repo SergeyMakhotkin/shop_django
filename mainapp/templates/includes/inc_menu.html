@@ -5,6 +5,8 @@
             <li><a href={% url 'main' %}>Главная</a></li>
             <li><a href={% url 'products:index' %}>Каталог</a></li>
             <li><a href={% url 'contacts' %}>Контакты</a></li>
+            <li><a href={% url 'basket:read' %}>Корзина</a></li>
+
             {% if user.is_authenticated %}
                {% comment %} <li>
                     <a href="{% url 'auth:edit' %}">

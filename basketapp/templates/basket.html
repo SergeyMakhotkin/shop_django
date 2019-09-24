@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block css %}
+    <link rel="stylesheet" href={% static '/css/bootstrap.min.css' %}>
+{% endblock %}
+
 {% block content %}
     <div class="basket_list">
-      {% include 'includes/inc_basket_list.html' %}
+        {% include 'includes/inc_basket_list.html' %}
     </div>
-    <button class="btn btn-round">
-      <a href="{% url 'main' %}">на главную</a>
-    </button>
+
 {% endblock %}
 
 {% block js %}

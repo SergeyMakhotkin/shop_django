@@ -1,17 +1,20 @@
+{% load custom_tags %}
 {% for item in basket_items %}
-<div class="basket_record">
-  <span class="category_name">{{ item.product.category.name }}</span>
-  <span class="product_name">{{ item.product.name }}</span>
-  <span class="product_price">{{ item.product.price }}&nbspруб</span>
-  <input type="number" min="0"
-         name="{{ item.pk }}"
-         value="{{ item.quantity }}"
-  >
-  <span class="product_cost">{{ item.cost }}&nbspруб</span>
-  <button class="btn btn-round">
-    <a href="{% url 'basket:remove' item.pk %}" class="">
-      удалить
-    </a>
-  </button>
-</div>
+    <div class="basket_record">
+        <span class="category_name">{{ item.product.category.name }}</span>
+        <span class="product_name">{{ item.product.name }}</span>
+        <span class="product_price">{{ item.product.price }}</span>
+        <input type="number" min="0"
+               name="{{ item.pk }}"
+               value="{{ item.quantity }}"
+        >
+        <span class="product_cost">{{ item.cost }}</span>
+        <button class="btn btn-round">
+            <a href="{% url 'basket:remove_slot' item.pk %}" class="">
+                удалить
+            </a>
+        </button>
+    </div>
 {% endfor %}
+<hr>
+<div>Общая стоимость товаров в корзине: {{ basket_items|basket_total_cost }}</div>
