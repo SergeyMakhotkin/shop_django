@@ -87,7 +87,7 @@ b. Убрать маркеры списка.*/
 }
 
 .product_menu_active a {
-    color: red;
+    color: green;
 }
 
 
@@ -264,6 +264,34 @@ table tr:nth-child(1) {
 
 .product_list div li {
     list-style: none;
+
+}
+
+.product_list div li:last-child {
+    margin-bottom: 20px;
+}
+
+.product_list div a img {
+    width: 100px;
+    height: 100px;
+}
+
+.product a img {
+    outline: 1px solid darkblue;
+}
+
+.product a img:hover {
+    outline: 2px solid red;
+}
+
+.product li a:hover,
+.product li button a:hover {
+    color: red;
+}
+
+
+.product li a {
+    text-decoration: none;
 }
 
 .google_map iframe {
@@ -293,3 +321,7 @@ table tr:nth-child(1) {
     outline-style: solid;
 
 }
+
+.active {
+    background-color: darkorange;
+ }

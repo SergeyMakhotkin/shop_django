@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 from mainapp.models import ProductCategory, Product
-# from django.contrib.auth.models import User
+# from django.contrib.auth.models import User  # Стандартная модель пользователя
 from authapp.models import ShopUser
 
 import json, os
@@ -21,7 +21,6 @@ class Command(BaseCommand):
         for category in categories:
             new_category = ProductCategory(**category)  # распаковка словорей в нужный формат
             new_category.save()
-
 
         products = load_from_json('products')
 

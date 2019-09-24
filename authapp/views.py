@@ -13,13 +13,18 @@ def login(request):
     if request.method == 'POST' and login_form.is_valid():
         username = request.POST['username']
         password = request.POST['password']
+        next = request.POST.get('next')
 
         user = auth.authenticate(username=username, password=password)
         if user and user.is_active:
             auth.login(request, user)
-            return HttpResponseRedirect(reverse('main'))
+            if next:
+                return HttpResponseRedirect(next)
+            else:
+                return HttpResponseRedirect(reverse('main'))
+    next = request.GET.get('next')
 
-    content = {'title': title, 'login_form': login_form}
+    content = {'title': title, 'login_form': login_form, 'next': next}
     return render(request, 'authapp/login.html', content)
 
 
@@ -32,11 +37,12 @@ def register(request):
     title = 'регистрация'
 
     if request.method == 'POST':
-        register_form = ShopUserRegisterForm(request.POST, request.FILES)
+        register_form = ShopUserRegisterForm(data=request.POST, files=request.FILES)
 
         if register_form.is_valid():
-            register_form.save()
-            return HttpResponseRedirect(reverse('auth:login'))
+            user = register_form.save()
+            auth.login(request, user)
+            return HttpResponseRedirect(reverse('main'))
     else:
         register_form = ShopUserRegisterForm()
 

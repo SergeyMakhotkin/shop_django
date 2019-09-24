@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load custom_tags %}
+
+{% block title %}
+    <title>Продукты</title>
+{% endblock %}
+
+{% block content %}
+    <h1>Продукты</h1>
+    <div style="text-align: right; margin-right: 5em">Количество продуктов в корзине: {{ basket|basket_total_quantity }}</div>
+    <div style="text-align: right; margin-right: 5em">Общая стоимость корзины: {{ basket|basket_total_cost }}</div>
+    {% include 'includes/inc_product_categories_menu.html' %}
+    <div style="display: flex; flex-wrap: wrap;" class="category-products clearfix">
+        <div style="margin-top: 20px" class="block">
+              <div style="width: 18rem;">
+
+                  <a href="{% url 'products:product' hot_product.pk %}"><img src="/media/{{ hot_product.image }}"
+                                         alt="{{ hot_product.short_desc }}">
+
+                  <div class="card-body">
+                      <h5 class="card-title">{{ hot_product.name }}</h5>
+                      <p class="card-text">{{ hot_product.short_desc }}</p>
+                      <h1 style="color: red;">ГОРЯЧЕЕ ПРЕДЛОЖЕНИЕ</h1>
+                      <div style="color: red; text-align: center">"Этого товара осталось на складе мало. Спешите!!!!!!!</div>
+                      <button style="float: left"><a href="{% url 'basket:add' hot_product.pk %}">Добавить в корзину</a></button>
+                      <button><a href="{% url 'basket:remove' hot_product.pk %}">Удалить из корзины</a></button>
+                  </div>
+              </div>
+          </div>
+    </div>
+{% endblock %}
