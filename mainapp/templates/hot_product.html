@@ -13,7 +13,10 @@
     <div style="display: flex; flex-wrap: wrap;" class="category-products clearfix">
         <div style="margin-top: 20px" class="block">
               <div style="width: 18rem;">
-                  <img src="/media/{{ hot_product.image }}" class="card-img-top" alt="hot_product">
+
+                  <a href="{% url 'products:product' hot_product.pk %}"><img src="/media/{{ hot_product.image }}"
+                                         alt="{{ hot_product.short_desc }}">
+
                   <div class="card-body">
                       <h5 class="card-title">{{ hot_product.name }}</h5>
                       <p class="card-text">{{ hot_product.short_desc }}</p>
