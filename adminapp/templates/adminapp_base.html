@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+    {% endblock %}
+
+    {% block css %}
+    {% endblock %}
+
+    <link rel="stylesheet" href={% static '/mainapp/css/style.css' %}>
+
+</head>
+
+<body>
+{% block content %}
+{% endblock %}
+
+{% block js %}
+{% endblock %}
+</body>
+</html>
