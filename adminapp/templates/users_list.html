@@ -11,7 +11,6 @@
 
 
     <h2>Список пользователей</h2>
-{#    <a href="{% url 'admin_custom:product_create' %}">Создать нового пользователя</a>#}
     <table>
         <tr>
             <td>Имя пользователя</td>
@@ -21,18 +20,22 @@
             <td>Последий логин</td>
         </tr>
         {% for object in object_list %}
-            <td>{{ object.username }}</td>
-            {% if object.is_active %}
-                <td>active</td>
-            {% else %}
-                <td>disable</td>
-            {% endif %}
-            <td>{{ object.email }}</td>
-            <td>{{ object.age }}</td>
-            <td>{{ object.last_login }}</td>
-
-{#                <a href="{% url 'admin_custom:product_read' object.pk %}">{{ object.name }}</a>#}
+            <tr>
+                <td><a href="{% url 'admin_custom:user_read' object.pk %}">{{ object.username }}</a></td>
+                {% if object.is_active %}
+                    <td>active</td>
+                {% else %}
+                    <td>disable</td>
+                {% endif %}
+                <td>{{ object.email }}</td>
+                <td>{{ object.age }}</td>
+                <td>{{ object.last_login }}</td>
             </tr>
         {% endfor %}
     </table>
+    <br>
+    <div>
+        <button><a style="text-decoration: none" href="{% url 'admin_custom:user_create' %}">Создать нового
+            пользователя</a></button>
+    </div>
 {% endblock %}
