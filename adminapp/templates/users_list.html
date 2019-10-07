@@ -1,0 +1,38 @@
+{% extends 'adminapp_base.html' %}
+{% load static %}
+{% load custom_tags %}
+
+
+{% block title %}
+    <title>{{ title }}</title>
+{% endblock %}
+
+{% block content %}
+
+
+    <h2>Список пользователей</h2>
+{#    <a href="{% url 'admin_custom:product_create' %}">Создать нового пользователя</a>#}
+    <table>
+        <tr>
+            <td>Имя пользователя</td>
+            <td>Статус учетной записи</td>
+            <td>email</td>
+            <td>Возраст</td>
+            <td>Последий логин</td>
+        </tr>
+        {% for object in object_list %}
+            <td>{{ object.username }}</td>
+            {% if object.is_active %}
+                <td>active</td>
+            {% else %}
+                <td>disable</td>
+            {% endif %}
+            <td>{{ object.email }}</td>
+            <td>{{ object.age }}</td>
+            <td>{{ object.last_login }}</td>
+
+{#                <a href="{% url 'admin_custom:product_read' object.pk %}">{{ object.name }}</a>#}
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

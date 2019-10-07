@@ -5,20 +5,21 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from django.views.generic.list import ListView
 from mainapp.models import Product, ProductCategory
+from authapp.models import ShopUser
+
 # from .forms import ProductAdminForm
 
 app_name = 'adminapp'
 
-# class IsSuperUserView(UserPassesTestMixin):
-#     def test_func(self):
-#         return self.request.user.is_superuser
+
+class IsSuperUserView(UserPassesTestMixin):
+    def test_func(self):
+        return self.request.user.is_superuser
 
 
-class ProductListView(ListView):
+class ProductListView(IsSuperUserView, ListView):
     model = Product
     template_name = 'products.html'
-
-
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(ProductListView, self).get_context_data(**kwargs)
@@ -34,8 +35,7 @@ class ProductListView(ListView):
         return queryset
 
 
-
-class ProductDetailView(DetailView):
+class ProductDetailView(IsSuperUserView, DetailView):
     model = Product
     template_name = 'adm_product.html'
 
@@ -46,13 +46,13 @@ class ProductDetailView(DetailView):
         context['title'] = self.object.name
         return context
 
+
 #
-class ProductCreateView(CreateView):
+class ProductCreateView(IsSuperUserView, CreateView):
     model = Product
     template_name = 'product_update.html'
     success_url = reverse_lazy('admin_custom:product_read')
     fields = '__all__'
-
 
     def get_context_data(self, **kwargs):
         context = super(ProductCreateView, self).get_context_data(**kwargs)
@@ -62,13 +62,16 @@ class ProductCreateView(CreateView):
 
     def get_success_url(self):
         return reverse_lazy('admin_custom:product_read', kwargs={'pk': self.object.pk})
+
+
 #
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(IsSuperUserView, UpdateView):
     model = Product
     template_name = 'product_update.html'
     success_url = reverse_lazy('admin_custom:products')
     fields = '__all__'
+
     # form_class = ProductAdminForm
 
     def get_context_data(self, **kwargs):
@@ -80,16 +83,55 @@ class ProductUpdateView(UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('admin_custom:product_read', kwargs={'pk': self.kwargs.get('pk')})
-#
-# class ProductDeleteView(IsSuperUserView, DeleteView):
-#     model = Product
-#     template_name = 'adminapp/product_delete.html'
+
+
+class ProductDeleteView(IsSuperUserView, DeleteView):
+    model = Product
+    template_name = 'product_delete.html'
+    success_url = reverse_lazy('admin_custom:products')
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(ProductDeleteView, self).get_context_data(**kwargs)
+        title = Product.objects.get(pk=self.kwargs.get('pk')).name
+        context['title'] = 'Удаление {}. Админка'.format(title)
+        return context
+
+
+class UsersListView(IsSuperUserView, ListView):
+    model = ShopUser
+    template_name = 'users_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(UsersListView, self).get_context_data(**kwargs)
+        context['title'] = 'Список пользователей. Админка'
+        return context
+
+class UserDetailView(IsSuperUserView, DetailView):
+    model = ShopUser
+    template_name = 'adm_user_overview.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(UserDetailView, self).get_context_data(**kwargs)
+        title = ShopUser.objects.get(pk=self.kwargs.get('pk')).username
+        context['title'] = 'Детали пользователя {}'.format(title)
+        return context
+
+
+
+# class UserUpdateView(IsSuperUserView, UpdateView):
+#     model = ShopUser
+#     template_name = 'adm_user_update.html'
 #     success_url = reverse_lazy('admin_custom:products')
+#     fields = '__all__'
 #
-#     def get_context_data(self, *, object_list=None, **kwargs):
-#         context = super(ProductDeleteView, self).get_context_data(**kwargs)
+#     # form_class = ProductAdminForm
+#
+#     def get_context_data(self, **kwargs):
+#         context = super(ProductUpdateView, self).get_context_data(**kwargs)
 #         title = Product.objects.get(pk=self.kwargs.get('pk')).name
-#         context['title'] = 'Удаление {}. Админка'.format(title)
+#         context['title'] = 'Редактирование пользователя {}. Админка'.format(title)
+#         context['button_label'] = 'Применить'
 #         return context
 #
-#
+#     def get_success_url(self):
+#         return reverse_lazy('admin_custom:product_read', kwargs={'pk': self.kwargs.get('pk')})
