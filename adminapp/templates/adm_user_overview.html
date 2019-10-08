@@ -1,0 +1,32 @@
+{% extends 'adminapp_base.html' %}
+{% load static %}
+{% load custom_tags %}
+
+
+{% block title %}
+    <title>{{ title }}</title>
+{% endblock %}
+
+{% block content %}
+
+    <h1>Профиль пользователя {{ object.username }}</h1>
+    <img width="200" src='/media/{{ object.avatar }}/'>
+    <br>
+    <hr>
+    <p>Username: {{ object.username }}</p>
+    <p>Имя: {{ object.first_name }}</p>
+    <p>Фамилия: {{ object.last_name }}</p>
+    <p>Дата регистрации: {{ object.date_joined }}</p>
+    <p>Возраст: {{ object.age }}</p>
+    <p>Статус: {{ object.is_active }}</p>
+    <p>SuperUser: {{ object.is_superuser }}</p>
+    <p>email: {{ object.email }}</p>
+
+    <div>
+        <button><a href="{% url 'admin_custom:user_update' object.pk %}" style="text-decoration: none">Редактировать</a>
+        </button>
+        <br>
+        <br>
+        <a href="{% url 'admin_custom:users' %}"> <-- К списку пользователей</a>
+    </div>
+{% endblock %}
