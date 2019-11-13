@@ -24,7 +24,7 @@ def products(request, pk=None):
     var_products = Product.objects.all()
     basket = []
     if request.user.is_authenticated:
-        basket = request.user.basket.all()
+        basket = request.user.basket.select_related('product').all()
         # basket = BasketSlot.objects.filter(user=request.user)
     if pk is not None:
         if pk > 0:

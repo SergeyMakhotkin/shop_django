@@ -9,7 +9,7 @@ from django.http import JsonResponse
 def basket(request):
     basket = []
     if request.user.is_authenticated:
-        basket = request.user.basket.all()
+        basket = request.user.basket.select_related('product', 'product__category').all()
 
     return render(request, 'basket.html', {'basket_items': basket})
 
