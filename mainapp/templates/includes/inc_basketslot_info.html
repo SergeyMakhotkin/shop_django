@@ -1,0 +1,9 @@
+{% load custom_tags %}
+<div>
+    <div style="text-align: right; margin-right: 5em">Количество слотов в
+        корзине: {{ basket|basket_total_quantity }}</div>
+    <div style="text-align: right; margin-right: 5em">Количество товаров в корзине: {{ basket|length }}</div>
+    <div style="text-align: right; margin-right: 5em">Общая стоимость товаров в корзине: {{ basket|basket_total_cost }}.
+    </div>
+    <hr>
+</div>

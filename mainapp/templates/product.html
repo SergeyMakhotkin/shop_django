@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+{#    {% include "includes/inc_basketslot_info.html" %}#}
+    <div>
+            <img src="/media/{{ product.image }}" alt="{{product.short_desc}}" title="{{ product.name }}">
+    </div>
+
+
+    <h3>{{ product.name }}</h3>
+    <ul style="list-style: none">
+        <li>{{ product.price }}</li>
+        <li>
+            <button><a href="{% url 'basket:add' product.pk %}">Добавить в корзину</a></button>
+        </li>
+
+        <li>
+            <button><a href="{% url 'basket:remove' product.pk %}">Удалить из корзины</a></button>
+        </li>
+    </ul>
+    <div>
+        {{ product.description }}
+    </div>
+
+{% endblock %}

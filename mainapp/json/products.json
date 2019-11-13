@@ -1,0 +1,61 @@
+[
+    {
+    "category": "Оборудование",
+    "name": "ABB Tropos 1420",
+    "image": "Tropos_1420.jpg",
+    "short_desc": "Базовая станция ABB Tropos 1420",
+    "description": "Базовая станция ABB Tropos 1420",
+    "price": 3000,
+    "quantity": 10
+  },
+    {
+    "category": "Оборудование",
+    "name": "ABB Tropos 4310",
+    "image": "Tropos_4310.jpg",
+    "short_desc": "Абонентский комплект ABB Tropos 4310",
+    "description": "Абонентский комплект ABB Tropos 4310 для установки на мобильную технику",
+    "price": 2500,
+    "quantity": 50
+  },
+    {
+    "category": "Оборудование",
+    "name": "ABB Tropos 6420",
+    "image": "Tropos_6420.png",
+    "short_desc": "Базовая станция ABB Tropos двухдиапазонная",
+    "description": "Базовая станция ABB Tropos двухдиапазонная",
+    "price": 5000,
+    "quantity": 45
+  },
+  {
+    "category": "Комплектующие",
+    "name": "Антенна Hubert+Suhner",
+    "image": "HUBERSUHNER.png",
+    "short_desc": "антенна всенаправленная",
+    "description": "всенаправленная антенна для установки на мобильную технику",
+    "price": 1000,
+    "quantity": 40
+  },
+  {
+    "category": "Комплектующие",
+    "name": "Кабель высокочастотный",
+    "image": "cable.jpg",
+    "short_desc": "высокочастотный кооксиальный кабель",
+    "description": "высокочастотный кооксиальный кабель для подключения антенны к оборудованию ABB Tropos",
+    "price": 400,
+    "quantity": 50
+  },
+  {
+    "category": "Комплектующие",
+    "name": "Комплект монтажный",
+    "short_desc": "Монтажный комплект",
+    "price": 100,
+    "quantity": 100
+  },
+  {
+    "category": "Комплектующие",
+    "name": "Еще какой-нибудь товар",
+    "short_desc": "краткое описание",
+    "price": 100,
+    "quantity": 100
+  }
+]

@@ -4,92 +4,109 @@
 {% block title %}
     <title>ABB Tropos 1420</title>
 {% endblock %}
+
 {% block content %}
+    <hr>
+    {% include "includes/inc_product_categories_menu.html" %}
+    <hr>
+    </div>
     <div>
         <hr>
         <h1>Базовая станция ABB Tropos 1420</h1>
         <div class="product_image">
             <a href={% static "/mainapp/img/tropos_6420.jpg" %} target="_blank">
-                <img src={% static "/mainapp/img/tropos-1420-mesh-router.jpg" %} alt="ABB Tropos 1420" title="ABB Tropos 1420"></a>
+                <img src={% static "/mainapp/img/../../media/products_images/Tropos_1420.jpg" %} alt="ABB Tropos 1420" title="ABB Tropos
+                1420"></a>
         </div>
         <div class="product_button">
             <input type="button" value="Купить">
         </div>
-        <p class="overview">TropOS 1420 wireless mesh edge nodes enable cost-effective, secure IP communications for utility, mining, oil and gas, and industrial applications that monitor and control field automation endpoints such as intelligent electrical devices, industrial process controllers and SCADA devices. They provide superior reliability by accessing 653 MHz of RF spectrum (463 MHz in ETSI) using the automatic interference avoidance capabilities of TropOS Mesh OS. TropOS 1420 edge nodes use the 802.11a/b/g/n wireless standards to deliver 600 Mbps total wireless data rate, 300 Mbps at 2.4 GHz and another 300 Mbps at 5 GHz.</p>
+        <p class="overview">TropOS 1420 wireless mesh edge nodes enable cost-effective, secure IP communications for
+            utility, mining, oil and gas, and industrial applications that monitor and control field automation
+            endpoints such as intelligent electrical devices, industrial process controllers and SCADA devices. They
+            provide superior reliability by accessing 653 MHz of RF spectrum (463 MHz in ETSI) using the automatic
+            interference avoidance capabilities of TropOS Mesh OS. TropOS 1420 edge nodes use the 802.11a/b/g/n wireless
+            standards to deliver 600 Mbps total wireless data rate, 300 Mbps at 2.4 GHz and another 300 Mbps at 5
+            GHz.</p>
 
-        <p class="description">Industrial companies increasingly use wireless communications networks to monitor and control thousands of automation devices in the field. These field area networks support a diverse set of applications including automated metering infrastructure and distribution automation for utilities; telemetry and mining management systems for mining; wellhead monitoring and logging for oil and gas; traffic signal management and video monitoring for transportation; process control for refining and chemicals; and SCADA for a variety of industries. </p>
+        <p class="description">Industrial companies increasingly use wireless communications networks to monitor and
+            control thousands of automation devices in the field. These field area networks support a diverse set of
+            applications including automated metering infrastructure and distribution automation for utilities;
+            telemetry and mining management systems for mining; wellhead monitoring and logging for oil and gas; traffic
+            signal management and video monitoring for transportation; process control for refining and chemicals; and
+            SCADA for a variety of industries. </p>
         <hr>
     </div>
     <div>
-        <h3>Характеристики</h3>
-        <table class=table>
-            <th>столбец А</th>
-            <th>столбец Б</th>
-            <th>столбец В</th>
-            <th>столбец Г</th>
-            <th>столбец Д</th>
-            <tr>
-                <td>параметр 1_1</td>
-                <td>параметр 1_2</td>
-                <td>параметр 1_3</td>
-                <td>параметр 1_4</td>
-                <td>параметр 1_5</td>
-            </tr>
-            <tr>
-                <td>параметр 2_1</td>
-                <td>параметр 2_2</td>
-                <td>параметр 2_3</td>
-                <td>параметр 2_4</td>
-                <td>параметр 2_5</td>
-            </tr>
-            <tr>
-                <td colspan="3">параметр 1</td>
-                <td>параметр 4</td>
-                <td>параметр 5</td>
-            </tr>
-            <tr>
-                <td>параметр 1</td>
-                <td>параметр 2</td>
-                <td>параметр 3</td>
-                <td>параметр 4</td>
-                <td rowspan="2">параметр 5</td>
-            </tr>
-            <tr>
-                <td>параметр 1</td>
-                <td>параметр 2</td>
-                <td>параметр 3</td>
-                <td>параметр 4</td>
-            </tr>
-        </table>
-        <ul class="feature_description">
-            <li>Wireless</li>
-            <p>- IEEE 802.11b/g/n radio<br>
-                - Modulation: 802.11g/n - OFDM (64-QAM, 16-QAM, QPSK, BPSK); 802.11b - DSSS (DBPSK, DQPSK, CCK)<br>
-                - Media access protocol: CSMA/CA with ACK<br>
-                - TX power (dBm EIRP)<br>
-                - 2x2 MIMO-antenna system: 2-TX x 2-RX<br>
-                - 7 dBi integrated omnidirectional antennas<br>
-                - RX Sensitivity:<br>
-                -98 dBm @ 1 Mbps<br>
-                -96 dBm @ 6 Mbps<br>
-                - IEEE 802.11a/n radio<br>
-                - Modulation: 802.11a/n - OFDM (64-QAM, 16-QAM, QPSK, BPSK)<br>
-                - Media access protocol: CSMA/CA with ACK<br>
-                - TX Power (dBm EIRP) - 2x2 MIMO-antenna system: 2-TX x 2-RX<br>
-                - 8 dBi integrated omnidirectional antennas<br>
-                - RX sensitivity:<br>
-                -95 dBm @ 6 Mbps<br>
-                - Support for 802.11n MIMO<br>
-                Integrated GPS receiver</p>
-            <li>Interfaces</li>
-            <p>
-                - Full 802.11a/b/g/n wireless, 802.11n client compatibility<br>
-                - One 10/100/1000 BASE-T Ethernet port<br>
-                - Serial: RS-232 or RS-485<br>
-                - Protocols: DNP3, Modbus (RTU), Modbus (ASCII), raw (serial pass-through) and IEC 61850 support<br>
-                - IPv4, IPv6-ready<br>
-                - BGP<br>
-                - 802.1q VLAN support (ESSID and IP based tagging)</p>
-        </ul>
-        <hr>
-    {% endblock %}
+    <h3>Характеристики</h3>
+    <table class=table>
+        <th>столбец А</th>
+        <th>столбец Б</th>
+        <th>столбец В</th>
+        <th>столбец Г</th>
+        <th>столбец Д</th>
+        <tr>
+            <td>параметр 1_1</td>
+            <td>параметр 1_2</td>
+            <td>параметр 1_3</td>
+            <td>параметр 1_4</td>
+            <td>параметр 1_5</td>
+        </tr>
+        <tr>
+            <td>параметр 2_1</td>
+            <td>параметр 2_2</td>
+            <td>параметр 2_3</td>
+            <td>параметр 2_4</td>
+            <td>параметр 2_5</td>
+        </tr>
+        <tr>
+            <td colspan="3">параметр 1</td>
+            <td>параметр 4</td>
+            <td>параметр 5</td>
+        </tr>
+        <tr>
+            <td>параметр 1</td>
+            <td>параметр 2</td>
+            <td>параметр 3</td>
+            <td>параметр 4</td>
+            <td rowspan="2">параметр 5</td>
+        </tr>
+        <tr>
+            <td>параметр 1</td>
+            <td>параметр 2</td>
+            <td>параметр 3</td>
+            <td>параметр 4</td>
+        </tr>
+    </table>
+    <ul class="feature_description">
+        <li>Wireless</li>
+        <p>- IEEE 802.11b/g/n radio<br>
+            - Modulation: 802.11g/n - OFDM (64-QAM, 16-QAM, QPSK, BPSK); 802.11b - DSSS (DBPSK, DQPSK, CCK)<br>
+            - Media access protocol: CSMA/CA with ACK<br>
+            - TX power (dBm EIRP)<br>
+            - 2x2 MIMO-antenna system: 2-TX x 2-RX<br>
+            - 7 dBi integrated omnidirectional antennas<br>
+            - RX Sensitivity:<br>
+            -98 dBm @ 1 Mbps<br>
+            -96 dBm @ 6 Mbps<br>
+            - IEEE 802.11a/n radio<br>
+            - Modulation: 802.11a/n - OFDM (64-QAM, 16-QAM, QPSK, BPSK)<br>
+            - Media access protocol: CSMA/CA with ACK<br>
+            - TX Power (dBm EIRP) - 2x2 MIMO-antenna system: 2-TX x 2-RX<br>
+            - 8 dBi integrated omnidirectional antennas<br>
+            - RX sensitivity:<br>
+            -95 dBm @ 6 Mbps<br>
+            - Support for 802.11n MIMO<br>
+            Integrated GPS receiver</p>
+        <li>Interfaces</li>
+        <p>
+            - Full 802.11a/b/g/n wireless, 802.11n client compatibility<br>
+            - One 10/100/1000 BASE-T Ethernet port<br>
+            - Serial: RS-232 or RS-485<br>
+            - Protocols: DNP3, Modbus (RTU), Modbus (ASCII), raw (serial pass-through) and IEC 61850 support<br>
+            - IPv4, IPv6-ready<br>
+            - BGP<br>
+            - 802.1q VLAN support (ESSID and IP based tagging)</p>
+    </ul>
+    <hr>
+{% endblock %}

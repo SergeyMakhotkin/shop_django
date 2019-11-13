@@ -1,0 +1,23 @@
+{% extends 'adminapp_base.html' %}
+{% load static %}
+{% load custom_tags %}
+
+
+{% block title %}
+    <title>{{ title }}</title>
+{% endblock %}
+
+{% block content %}
+
+    <p>Имя: {{ object.name }}</p>
+    <p>Описание: {{ object.description }}</p>
+    <div>
+        <button><a href="{% url 'admin_custom:category_update' object.pk %}" style="text-decoration: none">Редактировать</a>
+        </button>
+        <br>
+        <button><a href="{% url 'admin_custom:category_delete' object.pk %}" style="text-decoration: none">Удалить</a>
+        </button>
+        <br><br>
+        <a href="{% url 'admin_custom:categories' %}"> <-- К списку категорий товаров</a>
+    </div>
+{% endblock %}

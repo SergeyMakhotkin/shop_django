@@ -16,13 +16,22 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from mainapp.views import main, products, contacts, product_1, product_2, product_3
+from django.conf import settings
+from django.conf.urls.static import static
+from django.conf.urls import include
+import debug_toolbar
 
 urlpatterns = [
     path('', main, name='main'),
-    path('product', products, name='products'),
+    path('products/', include('mainapp.urls', namespace='products')),
     path('contacts/', contacts, name='contacts'),
-    path('prod_1/', product_1, name='product_1420'),
-    path('prod_2/', product_2, name='product_4310'),
-    path('prod_3/', product_3, name='product_6420'),
+    path('auth/', include('authapp.urls', namespace='auth')),
     path('admin/', admin.site.urls),
+    path('basket/', include('basketapp.urls', namespace='basket')),
+    path('admin_custom/', include('adminapp.urls', namespace='admin_custom')),
+    path('__debug__/', include(debug_toolbar.urls)),
+
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

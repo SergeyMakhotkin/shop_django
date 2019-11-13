@@ -1,5 +1,5 @@
 """
-WSGI config for geekshop project.
+WSGI conf for geekshop project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

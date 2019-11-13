@@ -1,0 +1,24 @@
+{% extends 'adminapp_base.html' %}
+{% load static %}
+{% load custom_tags %}
+
+
+{% block title %}
+    <title>Удаление товара {{ object.name }}</title>
+{% endblock %}
+
+{% block content %}
+    <div class="user_delete">
+        Уверены, что хотите удалить товар "{{ object.name }}"?
+        <form method="post">
+            {% csrf_token %}
+            <input class="btn btn-danger" type="submit" value="удалить">
+        </form>
+        <button class="btn btn-success">
+            <a href="{% url 'admin_custom:products' %}">
+                Отмена
+            </a>
+        </button>
+    </div>
+
+{% endblock %}

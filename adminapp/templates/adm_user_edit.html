@@ -1,0 +1,20 @@
+{% extends 'adminapp_base.html' %}
+{#{% extends 'authapp/base.html' %}#}
+{% load static %}
+{% load custom_tags %}
+{% load staticfiles %}
+
+
+
+{% block title %}
+    <title>{{ title }}</title>
+{% endblock %}
+
+{% block content %}
+    <form class="form-horizontal" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="form-control" type="submit" value={{ button_label }}>
+    </form>
+
+{% endblock %}
