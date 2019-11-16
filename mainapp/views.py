@@ -31,12 +31,11 @@ def products(request, pk=None):
             category = get_object_or_404(ProductCategory, pk=pk)
             var_products = var_products.filter(category=category)
 
-        content = {'products': var_products, 'categories': ProductCategory.objects.all(), 'basket': basket}
+        content = {'products': var_products, 'categories': ProductCategory.objects.all()}
         return render(request, 'catalog.html', content)
     else:
         content = {'hot_product': Product.objects.filter(is_hot=True).first(),
-                   'categories': ProductCategory.objects.all(),
-                   'basket': basket}
+                   'categories': ProductCategory.objects.all()}
         return render(request, 'hot_product.html', content)
 
 
@@ -53,7 +52,7 @@ def product(request, pk):
         'title': title,
         'links_menu': ProductCategory.objects.all(),
         'product': get_object_or_404(Product, pk=pk),
-        'basket': request.user.basket.all(),
+        # 'basket': request.user.basket.all(),
     }
 
     return render(request, 'product.html', content)
