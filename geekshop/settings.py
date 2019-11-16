@@ -23,14 +23,14 @@ LOGIN_URL = '/auth/login/'
 
 DOMAIN_NAME = 'http://localhost:8000'
 
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = '25'
-# EMAIL_HOST_USER = 'django@geekshop.local'
-# EMAIL_HOST_PASSWORD = 'geekshop'
-EMAIL_USE_SSL = False
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_PORT = '465'
+EMAIL_HOST_USER = 'smtp_test_server@bk.ru'
+EMAIL_HOST_PASSWORD = 'sQ@2019iT'
+EMAIL_USE_SSL = True
 
 # вариант python -m smtpd -n -c DebuggingServer localhost:25
-EMAIL_HOST_USER, EMAIL_HOST_PASSWORD = None, None
+# EMAIL_HOST_USER, EMAIL_HOST_PASSWORD = None, None
 
 # вариант логирования сообщений почты в виде файлов вместо отправки
 # EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
@@ -63,7 +63,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'debug_toolbar',
+    # 'debug_toolbar',
     'mainapp.apps.MainappConfig',
     'authapp.apps.AuthappConfig',
     'basketapp.apps.BasketappConfig',
@@ -78,7 +78,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware'
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware'
 ]
 
 INTERNAL_IPS = [

@@ -12,5 +12,9 @@
         <br>
         <input class="form-control" type="submit" value="войти">
     </form>
+    <br>
+    <form action="{% url 'auth:register' %}">
+            <button class="form-control" >регистрация</button>
 
+    </form>
 {% endblock %}
