@@ -8,7 +8,8 @@ urlpatterns = [
     path('', products, name='index'),
     path('category/<int:pk>/', products, name='category'),
     path('product/<int:pk>/', product, name='product'),
-    # path('product/2/', product_2, name='product_4310'),
-    # path('product/3/', product_3, name='product_6420'),
+    path('product/abb_1420/', product_1, name='product_1420'),
+    path('product/abb_4310/', product_2, name='product_4310'),
+    path('product/abb_6420/', product_3, name='product_6420'),
 
 ]

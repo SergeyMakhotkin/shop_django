@@ -1,11 +1,12 @@
 from django.shortcuts import render, HttpResponseRedirect
 from django.contrib import auth
 from django.urls import reverse, reverse_lazy
-from .forms import ShopUserLoginForm, ShopUserRegisterForm, ShopUserEditForm
+from .forms import ShopUserLoginForm, ShopUserRegisterForm, ShopUserEditForm, ShopUserProfileEditForm
 from django.views.generic.edit import UpdateView
 from .models import ShopUser
 from django.core.mail import send_mail
 from django.conf import settings
+from django.db import transaction
 
 
 def login(request):
@@ -108,7 +109,8 @@ def verify(request, email, activation_key):
             print(f'user {user} is activated')
             user.is_active = True
             user.save()
-            auth.login(request, user)
+            # backend='django.contrib.auth.backends.ModelBackend'
+            auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
 
             return render(request, 'authapp/verification_ok.html', context)
         else:
@@ -118,6 +120,32 @@ def verify(request, email, activation_key):
         print(f'error activation user: {e.args}')
 
     return HttpResponseRedirect(reverse('main'))
+
+
+@transaction.atomic
+def edit(request):
+    title = 'редактирование'
+
+    if request.method == 'POST':
+        edit_form = ShopUserEditForm(request.POST, request.FILES, instance=request.user)
+        profile_form = ShopUserProfileEditForm(request.POST, instance=request.user.shopuserprofile)
+        if edit_form.is_valid() and profile_form.is_valid():
+            edit_form.save()
+            return HttpResponseRedirect(reverse('auth:edit'))
+    else:
+        edit_form = ShopUserEditForm(instance=request.user)
+        profile_form = ShopUserProfileEditForm(
+            instance=request.user.shopuserprofile
+        )
+
+    content = {
+        'title': title,
+        'edit_form': edit_form,
+        'profile_form': profile_form
+    }
+
+    return render(request, 'authapp/edit.html', content)
+
 
 
 

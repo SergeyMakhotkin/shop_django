@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 from configparser import RawConfigParser
+import json
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -28,6 +29,25 @@ EMAIL_PORT = '465'
 EMAIL_HOST_USER = 'smtp_test_server@bk.ru'
 EMAIL_HOST_PASSWORD = 'sQ@2019iT'
 EMAIL_USE_SSL = True
+
+
+# параметры для авторизации через соцсети
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+LOGIN_REDIRECT_URL = 'main'
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'social_core.backends.vk.VKOAuth2',
+
+)
+
+# with open('geekshop/VK.json') as f:
+#     VK = json.load(f)
+
+SOCIAL_AUTH_VK_OAUTH2_KEY = '7211057'
+SOCIAL_AUTH_VK_OAUTH2_SECRET = 'YUmrMwBhNZqEf63tsLFG'
+
+# VK['SOCIAL_AUTH_VK_OAUTH2_KEY']
 
 # вариант python -m smtpd -n -c DebuggingServer localhost:25
 # EMAIL_HOST_USER, EMAIL_HOST_PASSWORD = None, None
@@ -68,6 +88,7 @@ INSTALLED_APPS = [
     'authapp.apps.AuthappConfig',
     'basketapp.apps.BasketappConfig',
     'adminapp.apps.AdminappConfig',
+    'social_django'
 ]
 
 MIDDLEWARE = [
@@ -99,6 +120,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'mainapp.context_processors.basket',
+                'mainapp.context_processors.user_data'
             ],
         },
     },

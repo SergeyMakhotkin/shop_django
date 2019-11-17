@@ -8,15 +8,13 @@ from basketapp.models import BasketSlot
 # Create your views here.
 
 def main(request):
-    #context = {'username': 'SERGEY'}
-    #links_menu = [
     links_menu = [
-        {'href': 'product_1420', 'name': 'ABB Tropos 1420'},
-        {'href': 'product_4310', 'name': 'ABB Tropos 4310'},
-        {'href': 'product_6420', 'name': 'ABB Tropos 6420'}
+        {'href': 'product_1', 'name': 'ABB Tropos 1420'},
+        {'href': 'product_2', 'name': 'ABB Tropos 4310'},
+        {'href': 'product_3', 'name': 'ABB Tropos 6420'}
     ]
     username = "Гость" if request.user.is_anonymous else request.user.username
-    context = {'links_menu': links_menu, 'username': username, 'products': Product.objects.all()}
+    context = {'links_menu': links_menu, 'products': Product.objects.all()}
     return render(request, 'index.html', context)
 
 

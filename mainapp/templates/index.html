@@ -21,12 +21,12 @@
         <hr>
 {#        <div>#}
 {#            <ul class="product_menu">#}
-{##}
 {#                {% for link in links_menu %}#}
 {#                    <li>#}
-{#                        <a href={% url link.href %}#}
-{#                                   class="product_menu {% if request.resolver_match.url_name == 'link.href' %}#}
-{#                           product_menu_active{% endif %}">{{ link.name }}</a>#}
+{#                        <a href={% url 'products' 'link.href' %}#}
+{#                                   class="product_menu{% if request.resolver_match.url_name == 'link.href' %}#}
+{#                           product_menu_active"{% endif %}">#}
+{#                        {{ link.name }}</a>#}
 {#                    </li>#}
 {#                {% endfor %}#}
 {#            </ul>#}

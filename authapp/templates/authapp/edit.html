@@ -7,12 +7,13 @@
     <form class="form-horizontal" action="{% url 'auth:edit' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ edit_form.as_p }}
-        <input class="form-control" type="submit" value="сохранить">
+        <div class="user_avatar"><img width=20% src="/media/{{ user.avatar }}"></div>
+        <br>
+        <input class="form-control btn-success" type="submit" value="сохранить">
     </form>
-    <button class="btn btn-round form-control last">
-        <a href="{% url 'main' %}" class="">
-            на главную
-        </a>
-    </button>
-    <div class="user_avatar"><img src="/media/{{ user.avatar }}"></div>
+    <br>
+    <form action="{% url 'main' %}">
+        <button class="form-control" >на главную</button>
+    </form>
+
 {% endblock %}

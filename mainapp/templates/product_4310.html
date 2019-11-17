@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
-{% load static %}
+
+{% load staticfiles %}
 
 {% block title %}
     <title>ABB Tropos 4310</title>
@@ -15,8 +16,8 @@
         <hr>
         <h3>ABB TropOS 4310-XA Mobile Mesh Router</h3>
         <div class="product_image">
-            <a href={% static "/mainapp/img/../../media/products_images/Tropos_4310.jpg" %} target="_blank">
-                <img src={% static "/mainapp/img/../../media/products_images/Tropos_4310.jpg" %} alt="ABB Tropos 4310" title="ABB Tropos 4310"></a>
+            <a href="/media/products_images/Tropos_4310.jpg" target="_blank">
+                <img src="/media/products_images/Tropos_4310.jpg" alt="ABB Tropos 4310" title="ABB Tropos 4310"></a>
         </div>
         <div class="product_button">
             <input type="button" value="Купить">
