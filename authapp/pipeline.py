@@ -6,26 +6,36 @@ import requests
 from django.utils import timezone
 from social_core.exceptions import AuthForbidden
 
-from authapp.models import ShopUserProfile
+from authapp.models import ShopUserProfile, ShopUser
 
 
 def save_user_profile(backend, user, response, *args, **kwargs):
     if backend.name == 'vk-oauth2':
-        api_url = urlunparse(('https', 'api.vk.com', '/method/users.get', None, #'/method/account.getInfo',
-                              urlencode(OrderedDict(fields=','.join(
-                                  # ('bdate', 'sex', 'about', 'user_ids', 'lang', 'country', 'city')),
-                                  ('bdate', 'sex', 'about', 'user_ids', 'lang', 'country', 'city')),
 
-                                  access_token=response['access_token'],
-                                  v='5.103')), None))
+        api_url = urlunparse(('https', 'api.vk.com', '/method/users.get', None, urlencode(
+            OrderedDict(fields=','.join(('bdate', 'sex', 'about', 'country', 'city', 'domain',)),
+                        access_token=response['access_token'], v='5.92')), None))
+
+        # api_url_2 = urlunparse(('https', 'api.vk.com', '/method/account.getInfo', None, urlencode(
+        #     OrderedDict(fields=','.join(('lang')),
+        #                 access_token=response['access_token'], v='5.92')), None))
+
+
         resp = requests.get(api_url)
-        print(resp)
         if resp.status_code != 200:
             return
 
         data = resp.json()['response'][0]
-        print('ответ от VK API: ')
-        print(resp.json())
+        print('ответ от VK API: ', resp.json())
+
+
+        # resp_2 = requests.get(api_url_2)
+        # if resp_2.status_code != 200:
+        #     return
+        #
+        # data_2 = resp_2.json()['response'][0]
+        # print('ответ от VK API: ', resp_2.json())
+
         if data['sex']:
             user.shopuserprofile.gender = ShopUserProfile.MALE if data['sex'] == 2 else ShopUserProfile.FEMALE
 
@@ -36,23 +46,34 @@ def save_user_profile(backend, user, response, *args, **kwargs):
             bdate = datetime.strptime(data['bdate'], '%d.%m.%Y').date()
 
             age = timezone.now().date().year - bdate.year
+
+
+            # так не работает
+            # if age:
+            #     print(age)
+            #     ShopUser.objects.filter(id=user.shopuserprofile.user_id).update(age=age)
+
             if age < 18:
                 user.delete()
                 raise AuthForbidden('social_core.backends.vk.VKOAuth2')
 
-        if data['lang']:
-            lang_choice = {0: 'ru', 1: 'uk', 2: 'be', 3: 'en', 4: 'es', 5: 'fi', 6: 'de', 7: 'it'}
-            user.shopuserprofile.language = lang_choice[data['lang']]
+
+
+        # if data['lang']:
+        #     print('значение lang: ', data['lang'])
+        #     lang_choice = {0: 'ru', 1: 'uk', 2: 'be', 3: 'en', 4: 'es', 5: 'fi', 6: 'de', 7: 'it'}
+        #     user.shopuserprofile.language = lang_choice[data['lang']]
 
         if data['country']:
             user.shopuserprofile.country = data['country']['title']
 
 
+
         if data['city']:
             user.shopuserprofile.city = data['city']['title']
 
-        if data['user_ids']:
-            user.shopuserprofile.link = 'https://vk.com/id'+data['user_ids']
+        if data['domain']:
+            user.shopuserprofile.link = 'https://vk.com/'+data['domain']
 
 
         user.save()
