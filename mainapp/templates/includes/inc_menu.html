@@ -12,13 +12,13 @@
             </li>
             <li><a href={% url 'basket:read' %}>Корзина</a></li>
 
-            {% if user.is_authenticated %}
-               {% comment %} <li>
-                    <a href="{% url 'auth:edit' %}">
-                        {{ user.first_name|default:'Пользователь' }}
-                    </a>
-                </li>{% endcomment %}
-            {% endif %}
+{#            {% if user.is_authenticated %}#}
+{#               {% comment %} <li>#}
+{#                    <a href="{% url 'auth:edit' %}">#}
+{#                        {{ user.first_name|default:'Пользователь' }}#}
+{#                    </a>#}
+{#                </li>{% endcomment %}#}
+{#            {% endif %}#}
             <li>
                 {% if user.is_authenticated %}
                     <a href="{% url 'auth:logout' %}">выйти</a>

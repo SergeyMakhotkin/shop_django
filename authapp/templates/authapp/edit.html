@@ -7,6 +7,7 @@
     <form class="form-horizontal" action="{% url 'auth:edit' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ edit_form.as_p }}
+        {{ profile_form.as_p }}
         <div class="user_avatar"><img width=20% src="/media/{{ user.avatar }}"></div>
         <br>
         <input class="form-control btn-success" type="submit" value="сохранить">

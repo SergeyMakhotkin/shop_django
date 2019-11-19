@@ -3,8 +3,6 @@ from mainapp.models import ProductCategory, Product
 from basketapp.models import BasketSlot
 
 
-
-
 # Create your views here.
 
 def main(request):
@@ -14,7 +12,7 @@ def main(request):
         {'href': 'product_3', 'name': 'ABB Tropos 6420'}
     ]
     username = "Гость" if request.user.is_anonymous else request.user.username
-    context = {'links_menu': links_menu, 'products': Product.objects.all()}
+    context = {'links_menu': links_menu, 'products': Product.objects.all(), 'username': username}
     return render(request, 'index.html', context)
 
 

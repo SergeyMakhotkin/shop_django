@@ -35,10 +35,21 @@ class ShopUserProfile(models.Model):
         (FEMALE, 'Ж'),
     )
 
+
+
     user = models.OneToOneField(ShopUser, unique=True, null=False, db_index=True, on_delete=models.CASCADE)
     tagline = models.CharField(verbose_name='теги', max_length=128, blank=True)
     aboutMe = models.TextField(verbose_name='о себе', max_length=512, blank=True)
     gender = models.CharField(verbose_name='пол', max_length=1, choices=GENDER_CHOICES, blank=True)
+    language = models.CharField(verbose_name='язык', max_length=2, blank=True)
+    city = models.CharField(verbose_name='город', max_length=128, blank=True)
+    country = models.CharField(verbose_name='страна', max_length=128, blank=True)
+    link = models.CharField(verbose_name='ссылка на страницу в VK', max_length=128, blank=True)
+
+
+
+
+
 
     @receiver(post_save, sender=ShopUser)
     def create_user_profile(sender, instance, created, **kwargs):
