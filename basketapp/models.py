@@ -21,4 +21,10 @@ class BasketSlot(models.Model):
     def get_cost(self):
         return self.quantity * self.product.price
 
+
     cost = property(get_cost)
+
+
+    # @staticmethod
+    def get_items(pk):
+        return BasketSlot.objects.filter(pk=pk).first()

@@ -107,7 +107,9 @@ INSTALLED_APPS = [
     'authapp.apps.AuthappConfig',
     'basketapp.apps.BasketappConfig',
     'adminapp.apps.AdminappConfig',
-    'social_django'
+    'social_django',
+    'ordersapp.apps.OrdersappConfig',
+
 ]
 
 MIDDLEWARE = [
