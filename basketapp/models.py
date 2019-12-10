@@ -1,4 +1,3 @@
-
 from django.db import models
 from django.conf import settings
 from mainapp.models import Product
@@ -22,3 +21,11 @@ class BasketSlot(models.Model):
         return self.quantity * self.product.price
 
     cost = property(get_cost)
+
+    @staticmethod
+    def get_items(user):
+        return BasketSlot.objects.filter(user=user).order_by('product__category')
+
+    @staticmethod
+    def get_item(pk):
+        return BasketSlot.objects.filter(pk=pk).first()
