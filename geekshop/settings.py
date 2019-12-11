@@ -22,7 +22,7 @@ LOGIN_URL = '/auth/login/'
 
 # настройка почтового клиента
 
-DOMAIN_NAME = 'http://localhost:8000'
+DOMAIN_NAME = 'http://office.connectum.ru:7088'
 
 EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_PORT = '465'
