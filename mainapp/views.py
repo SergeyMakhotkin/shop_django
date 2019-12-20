@@ -3,20 +3,16 @@ from mainapp.models import ProductCategory, Product
 from basketapp.models import BasketSlot
 
 
-
-
 # Create your views here.
 
 def main(request):
-    #context = {'username': 'SERGEY'}
-    #links_menu = [
     links_menu = [
-        {'href': 'product_1420', 'name': 'ABB Tropos 1420'},
-        {'href': 'product_4310', 'name': 'ABB Tropos 4310'},
-        {'href': 'product_6420', 'name': 'ABB Tropos 6420'}
+        {'href': 'product_1', 'name': 'ABB Tropos 1420'},
+        {'href': 'product_2', 'name': 'ABB Tropos 4310'},
+        {'href': 'product_3', 'name': 'ABB Tropos 6420'}
     ]
     username = "Гость" if request.user.is_anonymous else request.user.username
-    context = {'links_menu': links_menu, 'username': username, 'products': Product.objects.all()}
+    context = {'links_menu': links_menu, 'products': Product.objects.all(), 'username': username}
     return render(request, 'index.html', context)
 
 
@@ -31,12 +27,11 @@ def products(request, pk=None):
             category = get_object_or_404(ProductCategory, pk=pk)
             var_products = var_products.filter(category=category)
 
-        content = {'products': var_products, 'categories': ProductCategory.objects.all(), 'basket': basket}
+        content = {'products': var_products, 'categories': ProductCategory.objects.all()}
         return render(request, 'catalog.html', content)
     else:
         content = {'hot_product': Product.objects.filter(is_hot=True).first(),
-                   'categories': ProductCategory.objects.all(),
-                   'basket': basket}
+                   'categories': ProductCategory.objects.all()}
         return render(request, 'hot_product.html', content)
 
 
@@ -53,7 +48,7 @@ def product(request, pk):
         'title': title,
         'links_menu': ProductCategory.objects.all(),
         'product': get_object_or_404(Product, pk=pk),
-        'basket': request.user.basket.all(),
+        # 'basket': request.user.basket.all(),
     }
 
     return render(request, 'product.html', content)

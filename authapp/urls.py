@@ -12,5 +12,6 @@ urlpatterns = [
     path('register/', authapp.register, name='register'),
     # path('edit/<int:pk>/', authapp.EditView.as_view(), name='edit'),
     path('edit/', authapp.edit, name='edit'),
+    path('verify_link/<str:email>/<str:activation_key>/', authapp.verify, name='verify'),
 
 ]

@@ -11,3 +11,7 @@ def basket_total_quantity(basket):
 @register.filter
 def basket_total_cost(basket):
         return sum(list(map(lambda basket_slot: basket_slot.cost, basket)))
+
+
+# @register.filter
+# def media_folder_products(basket):

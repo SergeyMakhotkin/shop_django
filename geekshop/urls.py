@@ -20,6 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import include
 import debug_toolbar
+import social_django
 
 urlpatterns = [
     path('', main, name='main'),
@@ -28,8 +29,10 @@ urlpatterns = [
     path('auth/', include('authapp.urls', namespace='auth')),
     path('admin/', admin.site.urls),
     path('basket/', include('basketapp.urls', namespace='basket')),
+    path('order/', include('ordersapp.urls', namespace='orders')),
     path('admin_custom/', include('adminapp.urls', namespace='admin_custom')),
     path('__debug__/', include(debug_toolbar.urls)),
+    path('', include("social_django.urls", namespace='social'))
 
 ]
 

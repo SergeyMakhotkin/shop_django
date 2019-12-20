@@ -1,0 +1,12 @@
+{% extends 'authapp/base.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+    <form action="{% url 'main' %}">
+        <br>
+        <div class="h4 text-center head">аккаунт {{ email }} активирован!</div>
+        <br>
+        <button class="form-control btn-success" >Ок</button>
+    </form>
+{% endblock %}

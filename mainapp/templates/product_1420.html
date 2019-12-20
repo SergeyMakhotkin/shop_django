@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load staticfiles %}
 
 {% block title %}
     <title>ABB Tropos 1420</title>
@@ -14,8 +15,8 @@
         <hr>
         <h1>Базовая станция ABB Tropos 1420</h1>
         <div class="product_image">
-            <a href={% static "/mainapp/img/tropos_6420.jpg" %} target="_blank">
-                <img src={% static "/mainapp/img/../../media/products_images/Tropos_1420.jpg" %} alt="ABB Tropos 1420" title="ABB Tropos
+            <a href="/media/products_images/Tropos_1420.jpg" target="_blank">
+                <img src="/media/products_images/Tropos_1420.jpg" alt="ABB Tropos 1420" title="ABB Tropos
                 1420"></a>
         </div>
         <div class="product_button">
