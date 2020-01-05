@@ -4,6 +4,7 @@ from mainapp.models import Product
 from django.utils.functional import cached_property
 
 
+
 class Order(models.Model):
     FORMING = 'FM'
     SENT_TO_PROCEED = 'STP'
@@ -75,10 +76,8 @@ class Order(models.Model):
         self.is_active = False
         self.save()
 
-
+        
 # связь моделей один ко многим
-
-
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name="orderitems", on_delete=models.CASCADE)
     product = models.ForeignKey(Product, verbose_name='продукт', on_delete=models.CASCADE)
