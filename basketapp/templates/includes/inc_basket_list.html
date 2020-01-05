@@ -1,20 +1,36 @@
 {% load custom_tags %}
-{% for item in basket_items %}
-    <div class="basket_record">
-        <span class="category_name">{{ item.product.category.name }}</span>
-        <span class="product_name">{{ item.product.name }}</span>
-        <span class="product_price">{{ item.product.price }}</span>
-        <input type="number" min="0"
-               name="{{ item.pk }}"
-               value="{{ item.quantity }}"
-        >
-        <span class="product_cost">{{ item.cost }}</span>
-        <button class="btn btn-round">
-            <a href="{% url 'basket:remove_slot' item.pk %}" class="">
-                удалить
-            </a>
-        </button>
-    </div>
-{% endfor %}
+
+<table class="table orders_list">
+    <thead>
+    <tr>
+        <th>Название</th>
+        <th>Категория</th>
+        <th>Количество</th>
+        <th>Цена за штуку</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in basket_items %}
+        <tr>
+            <td class="td1 orders_list">{{ item.product.name }}</td>
+            <td>{{ item.product.category.name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.product.price }}</td>
+            <td>
+                <a class="btn btn-outline-dark btn-sm" href="{% url 'basket:remove_slot' item.pk %}">
+                    удалить
+                </a>
+            </td>
+
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
 <hr>
 <div>Общая стоимость товаров в корзине: {{ basket_items|basket_total_cost }}</div>
+
+<a class="btn btn-outline-primary" href="{% url 'main' %}">
+    на главную
+</a>

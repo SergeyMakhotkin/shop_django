@@ -27,9 +27,12 @@ urlpatterns = [
     path('products/', include('mainapp.urls', namespace='products')),
     path('contacts/', contacts, name='contacts'),
     path('auth/', include('authapp.urls', namespace='auth')),
-    path('admin/', admin.site.urls),
+
+    # path('admin/', admin.site.urls),  # стандартная админка django
+
     path('basket/', include('basketapp.urls', namespace='basket')),
-    path('admin_custom/', include('adminapp.urls', namespace='admin_custom')),
+    path('order/', include('ordersapp.urls', namespace='orders')),
+    path('admin/', include('adminapp.urls', namespace='admin')),
     path('__debug__/', include(debug_toolbar.urls)),
     path('', include("social_django.urls", namespace='social'))
 

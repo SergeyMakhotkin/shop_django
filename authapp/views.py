@@ -7,12 +7,13 @@ from .models import ShopUser
 from django.core.mail import send_mail
 from django.conf import settings
 from django.db import transaction
+from django.contrib.auth.decorators import login_required
 
 
 def login(request):
     title = 'вход'
 
-    login_form = ShopUserLoginForm(data=request.POST)
+    login_form = ShopUserLoginForm(data=request.POST or None)
     if request.method == 'POST' and login_form.is_valid():
         username = request.POST['username']
         password = request.POST['password']
@@ -59,6 +60,7 @@ def register(request):
 
     return render(request, 'authapp/register.html', content)
 
+
 class EditView(UpdateView):
     model = ShopUser
     template_name = 'authapp/register.html'
@@ -71,13 +73,15 @@ class EditView(UpdateView):
         context['submit_label'] = 'Применить'
         return context
 
+
+@login_required
 @transaction.atomic
 def edit(request):
     title = 'редактирование'
 
     if request.method == 'POST':
         edit_form = ShopUserEditForm(request.POST, request.FILES, instance=request.user)
-        profile_form =ShopUserEditForm(request.POST, instance=request.user.shopuserprofile)
+        profile_form = ShopUserEditForm(request.POST, instance=request.user.shopuserprofile)
         if edit_form.is_valid() and profile_form.is_valid():
             edit_form.save()
             return HttpResponseRedirect(reverse('auth:edit'))
@@ -90,17 +94,35 @@ def edit(request):
     return render(request, 'authapp/edit.html', content)
 
 
+# def send_verify_mail(user):
+#     verify_link = reverse('auth:verify', args=[user.email, user.activation_key])
+#
+#     title = f'Подтверждение учетной записи {user.username}'
+#
+#     message = f'Для подтверждения учетной записи {user.username} на портале {settings.DOMAIN_NAME} перейдите по ссылке: \n{settings.DOMAIN_NAME}{verify_link}'
+#
+#     print(f'from: {settings.EMAIL_HOST_USER}, to: {user.email}')
+#     return send_mail(title, message, settings.EMAIL_HOST_USER, [user.email], fail_silently=False)
+
 
 def send_verify_mail(user):
-    verify_link = reverse('auth:verify', args=[user.email, user.activation_key])
+    verify_link = reverse(
+        'auth:verify',
+        args=[user.email, user.activation_key])
 
-    title = f'Подтверждение учетной записи {user.username}'
+    title = 'Подтверждение учетной записи {0}'.format(user.username)
+    message = 'Для подтверждения учетной записи {0} \
+    на портале {1} перейдите по ссылке: \
+    \n{2}{3}'.format(user.username, settings.DOMAIN_NAME, settings.DOMAIN_NAME, verify_link)
 
-    message = f'Для подтверждения учетной записи {user.username} на портале \
-{settings.DOMAIN_NAME} перейдите по ссылке: \n{settings.DOMAIN_NAME}{verify_link}'
-
-    print(f'from: {settings.EMAIL_HOST_USER}, to: {user.email}')
-    return send_mail(title, message, settings.EMAIL_HOST_USER, [user.email], fail_silently=False)
+    print('from: {0}, to: {1}'.format(settings.EMAIL_HOST_USER, user.email))
+    return send_mail(
+        title,
+        message,
+        settings.EMAIL_HOST_USER,
+        [user.email],
+        fail_silently=False,
+    )
 
 
 def verify(request, email, activation_key):
@@ -123,31 +145,26 @@ def verify(request, email, activation_key):
 
     return HttpResponseRedirect(reverse('main'))
 
-
-@transaction.atomic
-def edit(request):
-    title = 'редактирование'
-
-    if request.method == 'POST':
-        edit_form = ShopUserEditForm(request.POST, request.FILES, instance=request.user)
-        profile_form = ShopUserProfileEditForm(request.POST, instance=request.user.shopuserprofile)
-        if edit_form.is_valid() and profile_form.is_valid():
-            edit_form.save()
-            return HttpResponseRedirect(reverse('auth:edit'))
-    else:
-        edit_form = ShopUserEditForm(instance=request.user)
-        profile_form = ShopUserProfileEditForm(
-            instance=request.user.shopuserprofile
-        )
-
-    content = {
-        'title': title,
-        'edit_form': edit_form,
-        'profile_form': profile_form
-    }
-
-    return render(request, 'authapp/edit.html', content)
-
-
-
-
+# @transaction.atomic
+# def edit(request):
+#    title = 'редактирование'
+#
+#    if request.method == 'POST':
+#        edit_form = ShopUserEditForm(request.POST, request.FILES, instance=request.user)
+#        profile_form = ShopUserProfileEditForm(request.POST, instance=request.user.shopuserprofile)
+#        if edit_form.is_valid() and profile_form.is_valid():
+#            edit_form.save()
+#            return HttpResponseRedirect(reverse('auth:edit'))
+#    else:
+#        edit_form = ShopUserEditForm(instance=request.user)
+#        profile_form = ShopUserProfileEditForm(
+#            instance=request.user.shopuserprofile
+#        )
+#
+#    content = {
+#        'title': title,
+#        'edit_form': edit_form,
+#        'profile_form': profile_form
+#    }
+#
+#    return render(request, 'authapp/edit.html', content)

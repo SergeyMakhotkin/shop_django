@@ -4,6 +4,7 @@ from mainapp.models import Product
 from django.contrib.auth.decorators import login_required
 from django.template.loader import render_to_string
 from django.http import JsonResponse
+from django.db.models import F
 
 @login_required
 def basket(request):
@@ -23,8 +24,12 @@ def add(request, product_pk):
     old_basket_slot = BasketSlot.objects.filter(user=request.user, product=product).first()
 
     if old_basket_slot:
-        old_basket_slot.quantity += 1
-        old_basket_slot.save()
+        # # 1. классический вариант обновления значения атрибута
+        # old_basket_slot.quantity += 1
+        # old_basket_slot.save()
+
+        # 2. вариант с использованием F-объектов
+        old_basket_slot.quantity = F('quantity') + 1
     else:
         new_basket_slot = BasketSlot(user=request.user, product=product)
         new_basket_slot.save()
@@ -43,8 +48,9 @@ def remove(request, product_pk):
         if basket_slot.quantity == 1:
             basket_slot.delete()
         else:
-            basket_slot.quantity -= 1
-            basket_slot.save()
+            # basket_slot.quantity -= 1
+            # basket_slot.save()
+            basket_slot.quantity = F('quantity') - 1
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 

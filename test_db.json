@@ -1,0 +1,352 @@
+[
+  {
+    "model": "mainapp.productcategory",
+    "pk": 5,
+    "fields": {
+      "name": "\u041e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u0435",
+      "description": "Wi-Fi \u043e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u0435 ABB Tropos"
+    }
+  },
+  {
+    "model": "mainapp.productcategory",
+    "pk": 6,
+    "fields": {
+      "name": "\u041a\u043e\u043c\u043f\u043b\u0435\u043a\u0442\u0443\u044e\u0449\u0438\u0435",
+      "description": "\u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u043e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u0435 \u0434\u043b\u044f \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u043a\u0438 \u0438 \u043c\u043e\u043d\u0442\u0430\u0436\u0430"
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 16,
+    "fields": {
+      "category": 5,
+      "name": "ABB Tropos 1420",
+      "image": "products_images\\Tropos_1420.jpg",
+      "short_desc": "\u0411\u0430\u0437\u043e\u0432\u0430\u044f \u0441\u0442\u0430\u043d\u0446\u0438\u044f ABB Tropos 1420",
+      "description": "\u0411\u0430\u0437\u043e\u0432\u0430\u044f \u0441\u0442\u0430\u043d\u0446\u0438\u044f ABB Tropos 1420",
+      "price": "3000.00",
+      "quantity": 14,
+      "is_hot": true
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 17,
+    "fields": {
+      "category": 5,
+      "name": "ABB Tropos 4310",
+      "image": "products_images\\Tropos_4310.jpg",
+      "short_desc": "\u0410\u0431\u043e\u043d\u0435\u043d\u0442\u0441\u043a\u0438\u0439 \u043a\u043e\u043c\u043f\u043b\u0435\u043a\u0442 ABB Tropos 4310",
+      "description": "\u0410\u0431\u043e\u043d\u0435\u043d\u0442\u0441\u043a\u0438\u0439 \u043a\u043e\u043c\u043f\u043b\u0435\u043a\u0442 ABB Tropos 4310 \u0434\u043b\u044f \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u043a\u0438 \u043d\u0430 \u043c\u043e\u0431\u0438\u043b\u044c\u043d\u0443\u044e \u0442\u0435\u0445\u043d\u0438\u043a\u0443",
+      "price": "2500.00",
+      "quantity": 50,
+      "is_hot": false
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 18,
+    "fields": {
+      "category": 5,
+      "name": "ABB Tropos 6420",
+      "image": "products_images\\Tropos_6420.png",
+      "short_desc": "\u0411\u0430\u0437\u043e\u0432\u0430\u044f \u0441\u0442\u0430\u043d\u0446\u0438\u044f ABB Tropos \u0434\u0432\u0443\u0445\u0434\u0438\u0430\u043f\u0430\u0437\u043e\u043d\u043d\u0430\u044f",
+      "description": "\u0411\u0430\u0437\u043e\u0432\u0430\u044f \u0441\u0442\u0430\u043d\u0446\u0438\u044f ABB Tropos \u0434\u0432\u0443\u0445\u0434\u0438\u0430\u043f\u0430\u0437\u043e\u043d\u043d\u0430\u044f",
+      "price": "5000.00",
+      "quantity": 48,
+      "is_hot": false
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 19,
+    "fields": {
+      "category": 6,
+      "name": "\u0410\u043d\u0442\u0435\u043d\u043d\u0430 Hubert+Suhner",
+      "image": "products_images\\HUBERSUHNER.png",
+      "short_desc": "\u0430\u043d\u0442\u0435\u043d\u043d\u0430 \u0432\u0441\u0435\u043d\u0430\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043d\u0430\u044f",
+      "description": "\u0432\u0441\u0435\u043d\u0430\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043d\u0430\u044f \u0430\u043d\u0442\u0435\u043d\u043d\u0430 \u0434\u043b\u044f \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u043a\u0438 \u043d\u0430 \u043c\u043e\u0431\u0438\u043b\u044c\u043d\u0443\u044e \u0442\u0435\u0445\u043d\u0438\u043a\u0443",
+      "price": "1000.00",
+      "quantity": 41,
+      "is_hot": false
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 20,
+    "fields": {
+      "category": 6,
+      "name": "\u041a\u0430\u0431\u0435\u043b\u044c \u0432\u044b\u0441\u043e\u043a\u043e\u0447\u0430\u0441\u0442\u043e\u0442\u043d\u044b\u0439",
+      "image": "products_images\\cable.jpg",
+      "short_desc": "\u0432\u044b\u0441\u043e\u043a\u043e\u0447\u0430\u0441\u0442\u043e\u0442\u043d\u044b\u0439 \u043a\u043e\u043e\u043a\u0441\u0438\u0430\u043b\u044c\u043d\u044b\u0439 \u043a\u0430\u0431\u0435\u043b\u044c",
+      "description": "\u0432\u044b\u0441\u043e\u043a\u043e\u0447\u0430\u0441\u0442\u043e\u0442\u043d\u044b\u0439 \u043a\u043e\u043e\u043a\u0441\u0438\u0430\u043b\u044c\u043d\u044b\u0439 \u043a\u0430\u0431\u0435\u043b\u044c \u0434\u043b\u044f \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u044f \u0430\u043d\u0442\u0435\u043d\u043d\u044b \u043a \u043e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u044e ABB Tropos",
+      "price": "400.00",
+      "quantity": 53,
+      "is_hot": false
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 21,
+    "fields": {
+      "category": 6,
+      "name": "\u041a\u043e\u043c\u043f\u043b\u0435\u043a\u0442 \u043c\u043e\u043d\u0442\u0430\u0436\u043d\u044b\u0439",
+      "image": "products_images\\nophoto.jpg",
+      "short_desc": "\u041c\u043e\u043d\u0442\u0430\u0436\u043d\u044b\u0439 \u043a\u043e\u043c\u043f\u043b\u0435\u043a\u0442",
+      "description": "",
+      "price": "100.00",
+      "quantity": 97,
+      "is_hot": false
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 22,
+    "fields": {
+      "category": 6,
+      "name": "\u0415\u0449\u0435 \u043a\u0430\u043a\u043e\u0439-\u043d\u0438\u0431\u0443\u0434\u044c \u0442\u043e\u0432\u0430\u0440",
+      "image": "products_images\\nophoto.jpg",
+      "short_desc": "\u043a\u0440\u0430\u0442\u043a\u043e\u0435 \u043e\u043f\u0438\u0441\u0430\u043d\u0438\u0435",
+      "description": "",
+      "price": "100.00",
+      "quantity": 100,
+      "is_hot": true
+    }
+  },
+  {
+    "model": "authapp.shopuser",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$150000$0DwoZ7S5VxYV$b3XmhAfLudpaZWH97c7S9nombc/sBZcrYDJ1xb0GXI0=",
+      "last_login": "2020-01-04T13:56:19.467Z",
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "admin@geekshop.local",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2019-11-14T23:16:19.853Z",
+      "avatar": "",
+      "age": 27,
+      "activation_key": "",
+      "activation_key_expires": "2019-11-17T07:33:30.762Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "authapp.shopuser",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$150000$PoPPfKF697CU$coOud8E2ViivDrJzVSP3ZfSRAGCuNvFo4dHSzpPowrU=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "test",
+      "first_name": "test",
+      "last_name": "",
+      "email": "test@123.ru",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2019-11-15T07:45:30.269Z",
+      "avatar": "",
+      "age": 21,
+      "activation_key": "2c59576fa11e9201de459a5bdcc08755ff449977",
+      "activation_key_expires": "2019-11-17T07:42:54.226Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "authapp.shopuser",
+    "pk": 7,
+    "fields": {
+      "password": "pbkdf2_sha256$150000$qyL10X2oJ2Pd$r+7EJrLlNWLanwqg8wF00KUng92goT5lcnoxXdN0ZlU=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "test_2",
+      "first_name": "test_2",
+      "last_name": "",
+      "email": "test_2@123.ru",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2019-11-15T07:55:42.107Z",
+      "avatar": "",
+      "age": 28,
+      "activation_key": "0b69b69147b7e5abc980e193ed1ed01211c1cdb6",
+      "activation_key_expires": "2019-11-17T07:54:57.383Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "authapp.shopuser",
+    "pk": 8,
+    "fields": {
+      "password": "pbkdf2_sha256$150000$IhGYvChWnvHx$lfU+tKRpNBIQGpQv8KSNL+BtjcHPGO8SoY4ecFK+9Jc=",
+      "last_login": "2019-11-15T08:26:23.724Z",
+      "is_superuser": false,
+      "username": "test_3",
+      "first_name": "test_3",
+      "last_name": "",
+      "email": "test_3@123.ru",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2019-11-15T08:03:20.425Z",
+      "avatar": "",
+      "age": 82,
+      "activation_key": "a3857e997ae3606a3c3127c5606f8b53e76b0c93",
+      "activation_key_expires": "2019-11-17T08:02:45.212Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "authapp.shopuser",
+    "pk": 9,
+    "fields": {
+      "password": "pbkdf2_sha256$150000$h0zRlMpXZGHy$XSQaExZSJnvoTsLXcbv+zD3pD2/9ZayUg4TjFi7jSbY=",
+      "last_login": "2019-11-16T16:11:25.510Z",
+      "is_superuser": false,
+      "username": "\u0421\u0435\u0440\u0433\u0435\u0439",
+      "first_name": "\u0421\u0435\u0440\u0433\u0435\u0439",
+      "last_name": "",
+      "email": "ser9box@mail.ru",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2019-11-16T15:40:16.082Z",
+      "avatar": "",
+      "age": 28,
+      "activation_key": "ed45fe1a7e42c9b45b86c421553a97ce8262971e",
+      "activation_key_expires": "2019-11-18T15:38:53.267Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "authapp.shopuser",
+    "pk": 16,
+    "fields": {
+      "password": "!wdBz2agAjuzp5Cm0Jm2lxrWkLNr9vl0nTjAQe1LN",
+      "last_login": "2019-12-03T20:39:57.102Z",
+      "is_superuser": false,
+      "username": "sergmakhotkin",
+      "first_name": "\u0421\u0435\u0440\u0433\u0435\u0439",
+      "last_name": "\u041c\u0430\u0445\u043e\u0442\u043a\u0438\u043d",
+      "email": "ser9box@mail.ru",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2019-11-22T17:25:01.129Z",
+      "avatar": "",
+      "age": 27,
+      "activation_key": "",
+      "activation_key_expires": "2019-11-24T17:22:35.038Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "social_django.usersocialauth",
+    "pk": 7,
+    "fields": {
+      "user": 16,
+      "provider": "vk-oauth2",
+      "uid": "13643623",
+      "extra_data": "{\"auth_time\": 1575405596, \"id\": 13643623, \"expires\": 86399, \"access_token\": \"fd84df64423f5f89575694272f9591271c46c466587ee3222dfe8d84c08207d4666d6f862b58dfe761930\", \"token_type\": null}"
+    }
+  },
+  {
+    "model": "ordersapp.order",
+    "pk": 1,
+    "fields": {
+      "user": 16,
+      "created": "2019-11-30T14:13:29.703Z",
+      "updated": "2019-11-30T14:33:20.827Z",
+      "status": "STP",
+      "is_active": true
+    }
+  },
+  {
+    "model": "ordersapp.order",
+    "pk": 2,
+    "fields": {
+      "user": 5,
+      "created": "2019-12-06T12:11:36.638Z",
+      "updated": "2019-12-08T13:24:12.172Z",
+      "status": "FM",
+      "is_active": true
+    }
+  },
+  {
+    "model": "ordersapp.orderitem",
+    "pk": 1,
+    "fields": {
+      "order": 1,
+      "product": 20,
+      "quantity": 2
+    }
+  },
+  {
+    "model": "ordersapp.orderitem",
+    "pk": 2,
+    "fields": {
+      "order": 1,
+      "product": 18,
+      "quantity": 0
+    }
+  },
+  {
+    "model": "ordersapp.orderitem",
+    "pk": 3,
+    "fields": {
+      "order": 2,
+      "product": 16,
+      "quantity": 1
+    }
+  },
+  {
+    "model": "ordersapp.orderitem",
+    "pk": 4,
+    "fields": {
+      "order": 2,
+      "product": 21,
+      "quantity": 5
+    }
+  },
+  {
+    "model": "ordersapp.orderitem",
+    "pk": 5,
+    "fields": {
+      "order": 2,
+      "product": 19,
+      "quantity": 1
+    }
+  },
+  {
+    "model": "ordersapp.orderitem",
+    "pk": 6,
+    "fields": {
+      "order": 2,
+      "product": 20,
+      "quantity": 1
+    }
+  },
+  {
+    "model": "ordersapp.orderitem",
+    "pk": 7,
+    "fields": {
+      "order": 2,
+      "product": 17,
+      "quantity": 1
+    }
+  },
+  {
+    "model": "ordersapp.orderitem",
+    "pk": 8,
+    "fields": {
+      "order": 2,
+      "product": 16,
+      "quantity": 1
+    }
+  }
+]

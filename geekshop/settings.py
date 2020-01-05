@@ -22,7 +22,8 @@ LOGIN_URL = '/auth/login/'
 
 # настройка почтового клиента
 
-DOMAIN_NAME = 'http://localhost:8000'
+# DOMAIN_NAME = 'http://localhost:8000'
+DOMAIN_NAME = 'http://office.connectum.ru:7088'
 
 EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_PORT = '465'
@@ -42,11 +43,9 @@ AUTHENTICATION_BACKENDS = (
 
 )
 
-with open('geekshop/VK.json') as f:
+with open('mainapp/json/VK.json') as f:
     VK = json.load(f)
 
-# SOCIAL_AUTH_VK_OAUTH2_KEY = '7211057'
-# SOCIAL_AUTH_VK_OAUTH2_SECRET = 'YUmrMwBhNZqEf63tsLFG'
 
 SOCIAL_AUTH_VK_OAUTH2_KEY = VK['SOCIAL_AUTH_VK_OAUTH2_KEY']
 SOCIAL_AUTH_VK_OAUTH2_SECRET = VK['SOCIAL_AUTH_VK_OAUTH2_SECRET']
@@ -89,8 +88,38 @@ SECRET_KEY = config.get('main', 'SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config.getboolean('main', 'DEBUG')
+# DEBUG = False
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['*']
+
+
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+if DEBUG:
+   def show_toolbar(request):
+       return True
+
+   DEBUG_TOOLBAR_CONFIG = {
+       'SHOW_TOOLBAR_CALLBACK': show_toolbar,
+   }
+
+   DEBUG_TOOLBAR_PANELS = [
+       'debug_toolbar.panels.versions.VersionsPanel',
+       'debug_toolbar.panels.timer.TimerPanel',
+       'debug_toolbar.panels.settings.SettingsPanel',
+       'debug_toolbar.panels.headers.HeadersPanel',
+       'debug_toolbar.panels.request.RequestPanel',
+       'debug_toolbar.panels.sql.SQLPanel',
+       'debug_toolbar.panels.templates.TemplatesPanel',
+       'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+       'debug_toolbar.panels.cache.CachePanel',
+       'debug_toolbar.panels.signals.SignalsPanel',
+       'debug_toolbar.panels.logging.LoggingPanel',
+       'debug_toolbar.panels.redirects.RedirectsPanel',
+       'debug_toolbar.panels.profiling.ProfilingPanel',
+       # 'template_profiler_panel.panels.template.TemplateProfilerPanel',
+   ]
 
 
 # Application definition
@@ -102,12 +131,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'debug_toolbar',
+    'debug_toolbar.apps.DebugToolbarConfig',
+    # 'template_profiler_panel.apps.TemplateProfilerPanelAppConfig',
     'mainapp.apps.MainappConfig',
     'authapp.apps.AuthappConfig',
     'basketapp.apps.BasketappConfig',
     'adminapp.apps.AdminappConfig',
-    'social_django'
+    'social_django',
+    'ordersapp.apps.OrdersappConfig',
+    # 'django_extensions',
+
 ]
 
 MIDDLEWARE = [
@@ -118,13 +151,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'debug_toolbar.middleware.DebugToolbarMiddleware'
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',  # слой обработки исключений sotial_django
 
 ]
 
 INTERNAL_IPS = [
-    '127.0.0.1'
+    '127.0.0.1',
+    '192.168.20.20'
 ]
 
 ROOT_URLCONF = 'geekshop.urls'
@@ -159,6 +193,14 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+
+    # 'default': {
+    #     'NAME': 'geekshop',
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'USER': 'django',
+    #     'PASSWORD': 'geekbrains',
+    #     'HOST': 'localhost'
+
     }
 }
 
@@ -205,3 +247,21 @@ STATICFILES_DIRS = [
 ]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media/')
+
+
+# подключаем memcached
+if os.name == 'posix':
+   CACHE_MIDDLEWARE_ALIAS = 'default'  # кэш по умолчанию
+   CACHE_MIDDLEWARE_SECONDS = 120  # время хранения кэша
+   CACHE_MIDDLEWARE_KEY_PREFIX = 'geekshop'  # ключ, по которому в кэше находим данные
+
+# в django можно использовать несколько кешей - их бэкенды должны быть в словаре CACHES
+   CACHES = {
+       'default': {
+           'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',  # бэкенд кэширование в RAM
+           'LOCATION': '127.0.0.1:11211',
+       }
+   }
+
+LOW_CACHE = True  # включение низкоуровневого кэширования
+
