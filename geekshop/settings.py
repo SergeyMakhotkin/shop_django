@@ -46,8 +46,6 @@ AUTHENTICATION_BACKENDS = (
 with open('mainapp/json/VK.json') as f:
     VK = json.load(f)
 
-# SOCIAL_AUTH_VK_OAUTH2_KEY = '7211057'
-# SOCIAL_AUTH_VK_OAUTH2_SECRET = 'YUmrMwBhNZqEf63tsLFG'
 
 SOCIAL_AUTH_VK_OAUTH2_KEY = VK['SOCIAL_AUTH_VK_OAUTH2_KEY']
 SOCIAL_AUTH_VK_OAUTH2_SECRET = VK['SOCIAL_AUTH_VK_OAUTH2_SECRET']
@@ -121,6 +119,7 @@ if DEBUG:
        'debug_toolbar.panels.redirects.RedirectsPanel',
        'debug_toolbar.panels.profiling.ProfilingPanel',
        'template_profiler_panel.panels.template.TemplateProfilerPanel',
+
    ]
 
 
@@ -149,7 +148,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-#    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -197,6 +196,7 @@ DATABASES = {
     #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 
     'default': {
+
         'NAME': 'geekshop',
         'ENGINE': 'django.db.backends.postgresql',
         'USER': 'django',
@@ -249,3 +249,21 @@ STATICFILES_DIRS = [
 ]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media/')
+
+
+
+# подключаем memcached
+if os.name == 'posix':
+   CACHE_MIDDLEWARE_ALIAS = 'default'  # кэш по умолчанию
+   CACHE_MIDDLEWARE_SECONDS = 120  # время хранения кэша
+   CACHE_MIDDLEWARE_KEY_PREFIX = 'geekshop'  # ключ, по которому в кэше находим данные
+
+# в django можно использовать несколько кешей - их бэкенды должны быть в словаре CACHES
+   CACHES = {
+       'default': {
+           'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',  # бэкенд кэширование в RAM
+           'LOCATION': '127.0.0.1:11211',
+       }
+   }
+
+LOW_CACHE = True  # включение низкоуровневого кэширования

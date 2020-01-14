@@ -30,6 +30,8 @@ class OrderList(ListView):
     def dispatch(self, *args, **kwargs):
         return super(ListView, self).dispatch(*args, **kwargs)
 
+
+      
 class OrderItemsCreate(CreateView):
     model = Order  # основан на модели Order, так как Order содержит в себе OrderItems
     fields = []
@@ -138,7 +140,7 @@ class OrderItemsUpdate(UpdateView):
         return super(OrderItemsUpdate, self).form_valid(form)
 
 
-
+      
     @method_decorator(login_required())
     def dispatch(self, *args, **kwargs):
         return super(UpdateView, self).dispatch(*args, **kwargs)
@@ -165,13 +167,16 @@ def order_forming_complete(request, pk):
 #  реализация изменения количества товаров в корзине с помощью сигналов (pre_save, pre_delete и приемник receiever)
 @receiver(pre_save, sender=OrderItem)
 @receiver(pre_save, sender=BasketSlot)
-def product_quantity_update_save(sender, update_fields, instance, **kwargs):
-    if update_fields is 'quantity' or 'product':
+
+def product_quantity_update_save(sender, update_fields, instance, raw, **kwargs):
+    if update_fields is 'quantity' or 'product' and not raw:
+
         if instance.pk:
             instance.product.quantity -= instance.quantity - sender.get_item(instance.pk).quantity
     else:
         instance.product.quantity -= instance.quantity
-        instance.product.save()
+    instance.product.save()
+
 
 
 @receiver(pre_delete, sender=OrderItem)
@@ -189,3 +194,4 @@ def get_product_price(request, pk):
         else:
             return JsonResponse({'price': 0})
 
+          

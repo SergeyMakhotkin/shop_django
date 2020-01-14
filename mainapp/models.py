@@ -32,5 +32,5 @@ class Product(models.Model):
 
     @staticmethod
     def get_items():
-        return Product.objects.order_by('category', 'name')
+        return Product.objects.all().order_by('category', 'name')
 
